@@ -5,12 +5,14 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import About from "./components/about";
+import Home from "./components/home/home";
 
  const App = () => {
  return (
    <div>
      <Navbar />
      <Routes>
+        <Route path="/" element={<Home />} />
        <Route path="/about" element={<About />} />
      </Routes>
      <Footer />
