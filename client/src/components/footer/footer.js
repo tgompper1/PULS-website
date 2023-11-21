@@ -1,7 +1,11 @@
 import React from "react";
 import './footer.css'
+import Popup from "../popup/popup";
+import {useState} from 'react'
 
-export default function Navbar() {
+export default function Footer() {
+    const[buttonPopup, setButtonPopup] = useState(false);
+
     return (
         <div class="col-12 col-s-12 footer">
             <table>
@@ -40,9 +44,14 @@ export default function Navbar() {
                     </td>
                     <td>
                         <h3>ADMIN LOGIN</h3>
+                        <a onClick={() => setButtonPopup(true)}>Login Here</a>
+                        <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>
+                            <h3>My Popup</h3>
+                        </Popup>
                     </td>
                 </tr>
             </table>
         </div>
+        
     );
 }

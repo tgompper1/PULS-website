@@ -7,7 +7,7 @@ import Footer from "./components/footer/footer";
 import About from "./components/about";
 import Home from "./components/home/home";
 
- const App = () => {
+const App = () => {
  return (
    <div>
      <Navbar />
