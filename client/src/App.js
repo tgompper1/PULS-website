@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
  // We import all the components we need in our app
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
-import About from "./components/about";
+import About from "./components/about/about";
 import Home from "./components/home/home";
 
 const App = () => {
