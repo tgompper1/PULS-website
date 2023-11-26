@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import About from "./components/about/about";
 import Home from "./components/home/home";
+import Blog from "./components/blog/blog";
 
 const App = () => {
  return (
@@ -13,7 +14,8 @@ const App = () => {
      <Navbar />
      <Routes>
         <Route path="/" element={<Home />} />
-       <Route path="/about" element={<About />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blog" element={<Blog />} />
      </Routes>
      <Footer />
    </div>
