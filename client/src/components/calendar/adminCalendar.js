@@ -40,12 +40,22 @@ const localizer = dateFnsLocalizer({
 // ];
 
 export default function AdminEventsCalendar() {
-  const[buttonPopup, setButtonPopup] = useState(false);
-   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
 
   function handleAddEvent() {
     setAllEvents([...allEvents, newEvent]);
+  }
+
+  //Clicking an existing event allows you to remove it
+  function handleDeleteEvent(pEvent) {
+    const r = window.confirm("Would you like to delete this event?")
+    if(r === true){
+      const prevEvents = [...allEvents]
+      const index = prevEvents.indexOf(pEvent)
+      prevEvents.splice(index, 1);
+      setAllEvents([...prevEvents]);
+    }
   }
 
   return (
@@ -81,6 +91,7 @@ export default function AdminEventsCalendar() {
                     endAccessor="start"
                     style={{ height: 500, margin: "50px" }}
                     views={['month']}
+                    onSelectEvent = {event => handleDeleteEvent(event)} 
           />
         </div>
       </div>
