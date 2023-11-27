@@ -39,7 +39,7 @@ const localizer = dateFnsLocalizer({
 //     },
 // ];
 
-export default function EventsCalendar() {
+export default function AdminEventsCalendar() {
   const[buttonPopup, setButtonPopup] = useState(false);
    const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
@@ -80,6 +80,7 @@ export default function EventsCalendar() {
                     startAccessor="start"
                     endAccessor="start"
                     style={{ height: 500, margin: "50px" }}
+                    views={['month']}
           />
         </div>
       </div>
