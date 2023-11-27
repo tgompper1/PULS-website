@@ -6,7 +6,7 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import About from "./components/about/about";
 import Home from "./components/home/home";
-import EventsCalendar from "./components/calendar/calendar"
+import EventsCalendar from "./components/calendar/adminCalendar"
 
 const App = () => {
  return (
