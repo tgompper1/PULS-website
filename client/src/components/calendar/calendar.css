@@ -5,7 +5,7 @@ body {
 
 /* CSS */
 .button-add {
-  background-color: #fff;
+  background-color: #ecded4;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
@@ -28,11 +28,11 @@ body {
 }
 
 .button-add:hover {
-  background-color: #f7fafa;
+  background-color: #f4eae3;
 }
 
 .button-add:focus {
-  border-color: #008296;
+  border-color: #293d3b;
   box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
   outline: 0;
 }
@@ -287,7 +287,7 @@ button.rbc-input::-moz-focus-inner {
           box-shadow: none;
   margin: 0;
   padding: 2px 5px;
-  background-color: #3174ad; /* event color */
+  background-color: #c44635; /* event color */
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
