@@ -53,7 +53,6 @@ export default function EventsCalendar() {
       <div className='row'>
         <div className="col-12 col-s-12 centered-div">
           <h1>PULS Events Calendar</h1>
-          <h2>Add New Event</h2>
           <div className="add-event-container">
             <input  type="text"
                     placeholder="Event time and title"
@@ -63,8 +62,11 @@ export default function EventsCalendar() {
             />
             <DatePicker placeholderText="Start Date" 
                         selected={newEvent.start}
+                        style={{ width: "100px", margin: "10px" }}
                         onChange={(start) => setNewEvent({ ...newEvent, start })}
             />
+          </div>
+          <div>
             <button className='button-add' onClick={handleAddEvent}>
               Add Event
             </button>
