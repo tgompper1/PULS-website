@@ -13,7 +13,7 @@ export default function Navbar() {
      <nav className="navbar">
        <NavLink className="navbar-logo" to="/">
             {/* <img style={{"width" : 40 + '%'}} src="images\logo_color.png"></img> */}
-            <img src="images\logo_color.png" width={120} height={80}></img>
+            <img src="images\logo\logo_color.png" width={120} height={80}></img>
        </NavLink>
         <div className="navbar-container container" id="navbarSupportedContent">
             <ul className='nav-menu'>
