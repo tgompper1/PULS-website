@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+// import React, { useState } from "react";
+// import { useNavigate } from "react-router";
 import './about.css'
 import '../twelve_column_grid.css'
 
