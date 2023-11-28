@@ -74,6 +74,9 @@ export default function AdminEventsCalendar() {
             <DatePicker placeholderText="Start Date" 
                         selected={newEvent.start}
                         style={{ width: "100px", margin: "10px" }}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={30}
                         onChange={(start) => setNewEvent({ ...newEvent, start })}
             />
           </div>
