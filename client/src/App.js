@@ -9,6 +9,9 @@ import Home from "./components/home/home";
 import AdminEventsCalendar from "./components/calendar/adminCalendar"
 import EventsCalendar from "./components/calendar/Calendar";
 
+import { Login, Signup } from "./components/pages";
+//import Home from "./components/pages/Home";
+
 const App = () => {
  return (
    <div>
