@@ -10,7 +10,7 @@
 }
 
 
-.button-77 {
+.puls-button {
   align-items: center;
   appearance: none;
   background-clip: padding-box;
@@ -48,18 +48,18 @@
 }
 
 @media (min-width: 768px) {
-  .button-77 {
+  .puls-button {
     padding: 19px 32px;
   }
 }
 
-.button-77:before,
-.button-77:after {
+.puls-button:before,
+.puls-button:after {
   border-radius: 80px;
 }
 
-.button-77:before {
-  background-color: rgba(249, 58, 19, .32);
+.puls-button:before {
+  background-color: #197278;
   content: "";
   display: block;
   height: 100%;
@@ -71,9 +71,9 @@
   z-index: -2;
 }
 
-.button-77:after {
+.puls-button:after {
   background-color: initial;
-  background-image: linear-gradient(92.83deg, #f77f00 0, #f93a13 100%);
+  background-image: linear-gradient(92.83deg, #197278 0, #293d3b 100%);
   bottom: 4px;
   content: "";
   display: block;
@@ -86,7 +86,7 @@
   z-index: -1;
 }
 
-.button-77:hover:not(:disabled):after {
+.puls-button:hover:not(:disabled):after {
   bottom: 0;
   left: 0;
   right: 0;
@@ -94,19 +94,19 @@
   transition-timing-function: ease-in;
 }
 
-.button-77:active:not(:disabled) {
+.puls-button:active:not(:disabled) {
   color: #ccc;
 }
 
-.button-77:active:not(:disabled):after {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg,#fdbf49,  #f77f00 0, 100%);
+.puls-button:active:not(:disabled):after {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg,#197278,  #2899a1, 0, 100%);
   bottom: 4px;
   left: 4px;
   right: 4px;
   top: 4px;
 }
 
-.button-77:disabled {
+.puls-button:disabled {
   cursor: default;
   opacity: .24;
 }

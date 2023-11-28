@@ -7,7 +7,8 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./calendar.css";
-import "../twelve_column_grid.css"
+import "../twelve_column_grid.css";
+import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 
 const locales = {
     "en-CA": require("date-fns/locale/en-CA"),
@@ -39,13 +40,23 @@ const localizer = dateFnsLocalizer({
 //     },
 // ];
 
-export default function EventsCalendar() {
-  const[buttonPopup, setButtonPopup] = useState(false);
-   const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+export default function AdminEventsCalendar() {
+  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
   const [allEvents, setAllEvents] = useState([]);
 
   function handleAddEvent() {
     setAllEvents([...allEvents, newEvent]);
+  }
+
+  //Clicking an existing event allows you to remove it
+  function handleDeleteEvent(pEvent) {
+    const r = window.confirm("Would you like to delete this event?")
+    if(r === true){
+      const prevEvents = [...allEvents]
+      const index = prevEvents.indexOf(pEvent)
+      prevEvents.splice(index, 1);
+      setAllEvents([...prevEvents]);
+    }
   }
 
   return (
@@ -63,6 +74,9 @@ export default function EventsCalendar() {
             <DatePicker placeholderText="Start Date" 
                         selected={newEvent.start}
                         style={{ width: "100px", margin: "10px" }}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={30}
                         onChange={(start) => setNewEvent({ ...newEvent, start })}
             />
           </div>
@@ -80,9 +94,17 @@ export default function EventsCalendar() {
                     startAccessor="start"
                     endAccessor="start"
                     style={{ height: 500, margin: "50px" }}
+                    views={['month']}
+                    onSelectEvent = {event => handleDeleteEvent(event)} 
           />
         </div>
       </div>
+      <div className="row">
+                <div className="col-12 col-s-12"> 
+                    <AutoplayCarousel></AutoplayCarousel>
+                </div>
+            </div>
+            <div className="row"><div className="col-12 col-s-12"> </div></div>
     </div>
   );
 }

@@ -6,7 +6,8 @@ import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import About from "./components/about/about";
 import Home from "./components/home/home";
-import EventsCalendar from "./components/calendar/adminCalendar"
+import AdminEventsCalendar from "./components/calendar/adminCalendar"
+import EventsCalendar from "./components/calendar/Calendar";
 
 const App = () => {
  return (
@@ -15,6 +16,7 @@ const App = () => {
      <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/admincalendar" element={<AdminEventsCalendar />} />
         <Route path="/calendar" element={<EventsCalendar />} />
      </Routes>
      <Footer />
