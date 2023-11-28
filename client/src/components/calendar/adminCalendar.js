@@ -7,7 +7,8 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./calendar.css";
-import "../twelve_column_grid.css"
+import "../twelve_column_grid.css";
+import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 
 const locales = {
     "en-CA": require("date-fns/locale/en-CA"),
@@ -95,6 +96,12 @@ export default function AdminEventsCalendar() {
           />
         </div>
       </div>
+      <div className="row">
+                <div className="col-12 col-s-12"> 
+                    <AutoplayCarousel></AutoplayCarousel>
+                </div>
+            </div>
+            <div className="row"><div className="col-12 col-s-12"> </div></div>
     </div>
   );
 }
