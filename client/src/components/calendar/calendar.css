@@ -304,10 +304,11 @@ button.rbc-input::-moz-focus-inner {
   pointer-events: none;
 }
 .rbc-event.rbc-selected, .rbc-day-slot .rbc-selected.rbc-background-event {
-  background-color: #265985;
+  background-color: #ecded4;
+  color: black;
 }
 .rbc-event:focus, .rbc-day-slot .rbc-background-event:focus {
-  outline: 5px auto #3b99fc;
+  outline: 5px auto #762f25;
 }
 
 .rbc-event-label {
