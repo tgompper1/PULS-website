@@ -42,12 +42,11 @@ const CreateBlogPost = (props) => {
           <div>
             <br />
             <Link to='/blog'>
-              Show Book List
+              Back to Blog List
             </Link>
           </div>
           <div>
-            <h1>Add Book</h1>
-            <p>Create new book</p>
+            <h1>Add Post</h1>
 
             <form noValidate onSubmit={onSubmit}>
               <div>

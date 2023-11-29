@@ -46,11 +46,6 @@ label {
     font-size: medium;
 }
 
-h1 {
-    font-size: 40px;
-    color: #002f49;
-}
-
 .submit-btn{
     display: inline-block;
     outline: none;

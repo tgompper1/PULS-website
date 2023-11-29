@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 50px;
+  color: #002f49;
+}
+
+p{
+  line-height: 1.5;
+  font-size:20px;
+}
+
+.page-content{
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}

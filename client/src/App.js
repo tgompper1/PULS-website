@@ -10,6 +10,8 @@ import AdminBlogList from "./components/blog/BlogListAdmin";
 import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
 
+import './styles/general.css';
+
 const App = () => {
  return (
    <div>

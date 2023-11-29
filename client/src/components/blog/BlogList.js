@@ -27,7 +27,9 @@ function BlogList(){
   return (
     <div>
       <h1>Blog Posts</h1>
-      {blogList}
+      <div className="page-content">
+        {blogList}
+      </div>
     </div>
   );
 }

@@ -4,6 +4,7 @@
   align-items: center;
 }
 
+
 .blog{
   display: flex;
 }
@@ -14,5 +15,9 @@
 }
 
 .post{
-  background-color: red;
+  color: #7c7c7b;
+}
+
+.post-title {
+  color: #003049;
 }
