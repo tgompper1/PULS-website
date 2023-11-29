@@ -11,6 +11,7 @@ function EditPostAdmin(props) {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // get the post by id
   useEffect(() => {
     axios
       .get(`http://localhost:8001/api/posts/${id}`)
@@ -29,6 +30,7 @@ function EditPostAdmin(props) {
     setPost({ ...post, [e.target.name]: e.target.value });
   };
 
+  // apply the changes on submit
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -47,14 +49,30 @@ function EditPostAdmin(props) {
       });
   };
 
+  // delete the post
+  const onDeleteClick = (id) => {
+    axios
+      .delete(`http://localhost:8001/api/posts/${id}`)
+      .then((res) => {
+        navigate('/blog-admin');
+      })
+      .catch((err) => {
+        console.log('Error form EditPostAdmin_deleteClick');
+      });
+  };
+
   return (
     <div>
       <div>
         <div>
           <div>
             <br />
-            <Link to='/blog-admin'>
+            <Link to='/blog-admin' className="button">
               Back to Blog List
+            </Link>
+
+            <Link to='/blog-admin' className="button" onClick={() => onDeleteClick(post._id)}>
+              Delete Post
             </Link>
           </div>
           <div>

@@ -8,7 +8,7 @@ const PostCard = (props) => {
   const date = new Date(post.createdAt)
   return(
     <div class="post">
-      <Link to={`/edit-post/${post._id}`}>
+      <Link to={`/edit-post/${post._id}`} className="button">
         Edit
       </Link>
       <h3 className="post-title">{post.title}</h3>

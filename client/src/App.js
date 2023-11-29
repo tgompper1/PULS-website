@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import AdminBlogList from "./components/blog/BlogListAdmin";
 import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
+import EditPostAdmin from "./components/blog/EditPostAdmin";
 
 import './styles/general.css';
 
@@ -21,7 +22,8 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog-admin" element={<AdminBlogList />} />
-        <Route path="/blog-admin/create-post" element={<CreateBlogPost />} />
+        <Route path="/create-post" element={<CreateBlogPost />} />
+        <Route path="/edit-post/:id" element={<EditPostAdmin />} />
      </Routes>
      <Footer />
    </div>
