@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-datepicker/dist/react-datepicker.css";
 import "./calendar.css";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import "../twelve_column_grid.css"
 import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 
