@@ -1,0 +1,18 @@
+.blog-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.blog{
+  display: flex;
+}
+
+.button{
+  color: black;
+  border: black;
+}
+
+.post{
+  background-color: red;
+}
