@@ -1,7 +1,7 @@
 import React from "react";
 // We import bootstrap to make our application look better.
-import './navbar.css'
-import '../twelve_column_grid.css'
+import '../styles/navbar.css'
+import './twelve_column_grid.css'
 
 // import "bootstrap/dist/css/bootstrap.css";
  // We import NavLink to utilize the react router.

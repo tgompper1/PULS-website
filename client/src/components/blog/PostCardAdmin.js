@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useParams} from 'react-router-dom';
-import './blog.css';
+import '../../styles/blog.css';
 
 const PostCard = (props) => {
   const post = props.post;

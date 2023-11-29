@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import './about.css'
-import '../twelve_column_grid.css'
+import './twelve_column_grid.css'
+import '../styles/about.css'
 
 export default function About() {
   // This following section will display 

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import PostCard from './PostCard';
 import '../twelve_column_grid.css'
-import './blog.css';
+import '../../styles/blog.css';
 
 function BlogList(){
   const [posts, setPosts] = useState([]);

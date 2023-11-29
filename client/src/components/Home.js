@@ -1,6 +1,6 @@
 import React from "react";
-import './home.css'
-import '../twelve_column_grid.css'
+import '../styles/home.css'
+import './twelve_column_grid.css'
 
 
 export default function Home() {
