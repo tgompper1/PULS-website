@@ -15,6 +15,15 @@ router.get('/', (req,res) => {
     .catch(err => res.status(404).json({nopostsfound:'No Posts found'}));
 });
 
+// @route GET api/posts/:id
+// @description Get single post by id
+// @access Public
+router.get('/:id', (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => res.json(post))
+    .catch(err => res.status(404).json({ nopostfound: 'No Post found' }));
+});
+
 // @route GET api/posts
 // @description add post
 // @access Admin
@@ -39,7 +48,7 @@ router.put('/:id', (req, res) => {
 // @description Delete post by id
 // @access Admin
 router.delete('/:id', (req, res) => {
-  Post.findByIdAndRemove(req.params.id, req.body)
+  Post.findOneAndDelete(req.params.id)
     .then(post => res.json({ mgs: 'Post deleted successfully' }))
     .catch(err => res.status(404).json({ error: 'No such post' }));
 });

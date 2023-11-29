@@ -26,7 +26,7 @@ function AdminBlogList(){
   
   return (
     <div>
-      <Link to="/blog-admin/create-post" className="button"> + ADD POST </Link>
+      <Link to="/create-post" className="button"> + ADD POST </Link>
       {blogList}
     </div>
   );

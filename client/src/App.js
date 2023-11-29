@@ -11,6 +11,7 @@ import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
 import AdminEventsCalendar from "./components/calendar/adminCalendar"
 import EventsCalendar from "./components/calendar/Calendar";
+import EditPostAdmin from "./components/blog/EditPostAdmin";
 
 import './styles/general.css';
 
@@ -25,7 +26,8 @@ const App = () => {
         <Route path="/calendar" element={<EventsCalendar />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog-admin" element={<AdminBlogList />} />
-        <Route path="/blog-admin/create-post" element={<CreateBlogPost />} />
+        <Route path="/create-post" element={<CreateBlogPost />} />
+        <Route path="/edit-post/:id" element={<EditPostAdmin />} />
      </Routes>
      <Footer />
    </div>
