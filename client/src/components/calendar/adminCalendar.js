@@ -23,42 +23,18 @@ const localizer = dateFnsLocalizer({
     locales,
 });
 
-// const dummyEvents = [
-//     {
-//         title: "Big Meeting",
-//         allDay: true,
-//         start: new Date(2023, 10, 0),
-//         end: new Date(2023, 10, 0),
-//     },
-//     {
-//         title: "Vacation",
-//         start: new Date(2023, 10, 7),
-//         end: new Date(2023, 10, 10),
-//     },
-//     {
-//         title: "Conference",
-//         start: new Date(2023, 10, 20),
-//         end: new Date(2023, 10, 23),
-//     },
-// ];
 
-export default function AdminEventsCalendar() {
-  // const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
-  // const [allEvents, setAllEvents] = useState([]);
-  
+export default function AdminEventsCalendar() {  
   const [events, setEvents] = useState([]);
-
-  const navigate = useNavigate();
-
   const [event, setEvent] = useState({
     title: '',
     start: '',
-    // end: ''
+    end: ''
   });
 
-  const onChange = (e) => {
-    setEvent({ ...event, [e.target.name]: e.target.value });
-  };
+  // const onChange = (e) => {
+  //   setEvent({ ...event, [e.target.name]: e.target.value });
+  // };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -73,7 +49,7 @@ export default function AdminEventsCalendar() {
         });
 
         // Push to /calendar
-        navigate('/calendar');
+       // navigate('/calendar');
       })
       .catch((err) => {
         console.log('Error in CreateEvent');
@@ -85,16 +61,51 @@ export default function AdminEventsCalendar() {
   // }
 
   // //Clicking an existing event allows you to remove it
-  // function handleDeleteEvent(pEvent) {
-  //   const r = window.confirm("Would you like to delete this event?")
-  //   if(r === true){
-  //     const prevEvents = [...allEvents]
-  //     const index = prevEvents.indexOf(pEvent)
-  //     prevEvents.splice(index, 1);
-  //     setAllEvents([...prevEvents]);
-  //   }
-  // }
+  function handleDeleteEvent(pEvent) {
+    const r = window.confirm("Would you like to delete this event?")
+    if(r === true){
+      // const prevEvents = [...allEvents]
+      // const index = prevEvents.indexOf(pEvent)
+      // prevEvents.splice(index, 1);
+      // setAllEvents([...prevEvents]);
+      axios
+      .delete('http://localhost:8001/api/events', pEvent)
+      .then((res) => {
+        // setEvent({
+        //   title: '',
+        //   start: '',
+        //   end: '',
+        // });
+
+        // Push to /calendar
+       // navigate('/calendar');
+      })
+      .catch((err) => {
+        console.log('Error in CreateEvent');
+      });
+    }
+  }
   
+  // const handleDeleteEvent = (e) => {
+    // e.preventDefault();
+    
+  //   axios
+  //     .delete('http://localhost:8001/api/events', event)
+  //     .then((res) => {
+  //       // setEvent({
+  //       //   title: '',
+  //       //   start: '',
+  //       //   end: '',
+  //       // });
+
+  //       // Push to /calendar
+  //      // navigate('/calendar');
+  //     })
+  //     .catch((err) => {
+  //       console.log('Error in CreateEvent');
+  //     });
+  // };
+
   useEffect(()=>{
     axios
       .get('http://localhost:8001/api/events')
@@ -112,7 +123,8 @@ export default function AdminEventsCalendar() {
       <div className='row'>
         <div className="col-12 col-s-12 centered-div">
           <h1>PULS Events Calendar</h1>
-          <form noValidate className="add-event-container" onSubmit={onSubmit}>
+          {/* <form noValidate className="add-event-container" onSubmit={onSubmit}> */}
+          <div className="add-event-calendar">
             <input  type="text"
                     placeholder="Event time and title"
                     style={{ width: "20%", margin: "10px" }}
@@ -123,20 +135,21 @@ export default function AdminEventsCalendar() {
             <DatePicker placeholderText="Start Date" 
                         selected={event.start}
                         style={{ width: "100px", margin: "10px" }}
-                        showTimeSelect
-                        timeFormat="HH:mm"
-                        timeIntervals={30}
+                        // showTimeSelect
+                        // timeFormat="HH:mm"
+                        // timeIntervals={30}
                         name='start'
                         // value={event.start}
+                        //onChange={(e) => setEvent({ ...event, start: e.target.value})}
                         onChange={(start) => setEvent({ ...event, start })}
             />
-            <input type='submit' className="button-add"/>
-          </form>
+            {/* <input type='submit' className="button-add"/> */}
+          </div>
           <div>
             {/* <button className='button-add' onClick={handleAddEvent}> */}
-            {/* <button className='button-add' onClick={onSubmit}>
+           <button className='button-add' onClick={onSubmit}>
               Add Event
-            </button> */}
+            </button>
           </div>
         </div>
       </div>
@@ -148,7 +161,7 @@ export default function AdminEventsCalendar() {
                     endAccessor="start"
                     style={{ height: 500, margin: "50px" }}
                     views={['month']}
-                    //onSelectEvent = {event => handleDeleteEvent(event)} 
+                    onSelectEvent = {event => handleDeleteEvent(event)} 
           />
         </div>
       </div>

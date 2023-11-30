@@ -5,7 +5,7 @@ const router = express.Router();
 const Event = require('../../models/Event');
 
 // test route
-router.get('/blog', (req, res) => res.send('post route testing!'));
+router.get('/calendar', (req, res) => res.send('post route testing!'));
 
 
 // @route GET api/posts
@@ -38,10 +38,10 @@ router.post('/', (req,res) => {
 // @route GET api/posts/:id
 // @description Delete post by id
 // @access Admin
-// router.delete('/:id', (req, res) => {
-//   Event.findByIdAndRemove(req.params.id, req.body)
-//     .then(post => res.json({ mgs: 'Event deleted successfully' }))
-//     .catch(err => res.status(404).json({ error: 'No such event' }));
-// });
+router.delete('/:id', (req, res) => {
+  Event.findByIdAndRemove(req.params.id, req.body)
+    .then(event => res.json({ mgs: 'Event deleted successfully' }))
+    .catch(err => res.status(404).json({ error: 'No such event' }));
+});
 
 module.exports = router;

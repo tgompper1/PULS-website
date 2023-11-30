@@ -10,10 +10,10 @@ const EventSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  end: {
-    type: Date,
-    required: true
-  }
+  // end: {
+  //   type: Date,
+  //   required: true
+  // }
 });
 
 module.exports = Event = mongoose.model('event', EventSchema);
