@@ -1,6 +1,7 @@
 import React from "react";
-import './navbar.css'
-import '../twelve_column_grid.css'
+// We import bootstrap to make our application look better.
+import '../styles/navbar.css'
+import './twelve_column_grid.css'
 
 import { NavLink } from "react-router-dom";
 export default function Navbar() {

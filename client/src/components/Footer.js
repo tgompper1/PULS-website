@@ -1,6 +1,6 @@
 import React from "react";
-import './footer.css'
-import Popup from "../popup/popup";
+import '../styles/footer.css'
+import Popup from "./Popup";
 import {useState} from 'react'
 
 export default function Footer() {

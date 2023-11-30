@@ -1,0 +1,3 @@
+{
+  "mongoURI": "mongodb+srv://puls:puls123@pulscluster.0e5anmo.mongodb.net/?retryWrites=true&w=majority"
+}
