@@ -4,9 +4,6 @@ const router = express.Router();
 // load Post model
 const Event = require('../../models/Event');
 
-// test route
-router.get('/calendar', (req, res) => res.send('post route testing!'));
-
 
 // @route GET api/posts
 router.get('/', (req,res) => {
@@ -24,24 +21,16 @@ router.post('/', (req,res) => {
     .catch(err => res.status(400).json({error:'Unable to add this event'}));
 })
 
-// // @route GET api/posts/:id
-// // @description Update post
-// // @access Admin
-// router.put('/:id', (req, res) => {
-//   Post.findByIdAndUpdate(req.params.id, req.body)
-//     .then(post => res.json({ msg: 'Updated successfully' }))
-//     .catch(err =>
-//       res.status(400).json({ error: 'Unable to update the Database' })
-//     );
-// });
-
 // @route GET api/posts/:id
 // @description Delete post by id
 // @access Admin
-router.delete('/:id', (req, res) => {
-  Event.findByIdAndRemove(req.params.id, req.body)
-    .then(event => res.json({ mgs: 'Event deleted successfully' }))
-    .catch(err => res.status(404).json({ error: 'No such event' }));
+router.delete('/:id', async (req, res) => {
+  try{
+     await Event.findByIdAndDelete(req.params.id);
+    return res.status(200).json({ success: true, msg: "success"});
+  }
+  catch(err){
+      console.error(err);
+  }
 });
-
 module.exports = router;
