@@ -19,6 +19,7 @@ const CreateBlogPost = (props) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('title', post.title);
+    formData.append('summary', post.summary);
     formData.append('body', post.body);
     formData.append('photo', post.photo);
 
@@ -27,6 +28,7 @@ const CreateBlogPost = (props) => {
       .then((res) => {
         setPost({
           title: '',
+          summary: '',
           body: '',
           photo: '',
         });
@@ -42,52 +44,58 @@ const CreateBlogPost = (props) => {
   return (
     <div>
       <div>
-        <div>
-          <div>
-            <br />
-            <Link to='/blog-admin' className="button">
-              Back to Blog List
-            </Link>
-          </div>
-          <div>
-            <h2>Add Post</h2>
+        <div className='page-content'>
+          <Link to='/blog-admin' className="nav-button">
+            Back to Blog List
+          </Link>
+          <h2>Add Post</h2>
 
-            <form noValidate onSubmit={onSubmit} className="page-content">
-              <div>
-                <input
+          <form noValidate onSubmit={onSubmit} className="page-content">
+            <div>
+              <input
+                className="text-input"
+                type='text'
+                placeholder='Title'
+                name='title'
+                value={post.title}
+                onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
+              />
+            </div>
+            <br />
+            <div>
+              <input
                   className="text-input"
                   type='text'
-                  placeholder='Title of BlogPost'
-                  name='title'
-                  value={post.title}
+                  placeholder='Summary'
+                  name='summary'
+                  value={post.summary}
                   onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
                 />
-              </div>
-              <br />
+            </div>
+            <br />
 
-              <input 
-                type="file" 
-                accept='.png, .jpg, .jpeg'
-                name='photo' 
-                onChange={e => setPost({ ...post, photo: e.target.files[0]})}>
-              </input>
-              <br />
+            <input 
+              type="file" 
+              accept='.png, .jpg, .jpeg'
+              name='photo' 
+              onChange={e => setPost({ ...post, photo: e.target.files[0]})}>
+            </input>
+            <br />
 
-              <div>
-                <ReactQuill
-                  type='text'
-                  placeholder='text here'
-                  name='body'
-                  className='form-control'
-                  value={post.body}
-                  onChange={(newValue) =>{
-                    setPost({...post, ["body"]: newValue});}}
-                />
-              </div>
+            <div>
+              <ReactQuill
+                type='text'
+                placeholder='text here'
+                name='body'
+                className='form-control'
+                value={post.body}
+                onChange={(newValue) =>{
+                  setPost({...post, ["body"]: newValue});}}
+              />
+            </div>
 
-              <input type='submit' className="button" value="Create Post" />
-            </form>
-          </div>
+            <input type='submit' className="button" value="Create Post" />
+          </form>
         </div>
       </div>
     </div>

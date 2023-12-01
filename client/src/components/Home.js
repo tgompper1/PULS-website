@@ -17,7 +17,7 @@ export default function Home() {
         <div class='row'>
             <div class="col-3"></div>
             <div class="col-4 col-s-12">
-                <h1>Welcome home.</h1>
+                <h1 className='page-title'>Welcome home.</h1>
                 <p>Since its inception, the Physiology Undergraduate League of Students
                     has been the elected student society at the service of undergraduate 
                     students in the Physiology Department at McGill University.

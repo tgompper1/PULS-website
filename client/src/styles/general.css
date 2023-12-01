@@ -5,13 +5,14 @@
 }
 
 
-h1 {
+h1.page-title {
   font-size: 50px;
   color: #002f49;
 }
 
-p{
+p.content{
   font-size:17px;
+  color: #7c7c7b;
 }
 
 .page-title{
@@ -24,7 +25,8 @@ p{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: flex-start;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
+  padding: 20px;
 }

@@ -7,14 +7,14 @@ const PostCard = (props) => {
   const date = new Date(post.createdAt); 
   const path = "http://localhost:8001/images/" + post.photo
   return(
-    <div className="post">
+    <Link to={`/post/${post._id}`} className="post">
       <img src={path} className="blog-image"></img>
       <div className="post-text">
         <h3 className="post-title">{post.title}</h3>
         <p className="date">{date.toDateString()}</p>
-        <p>{post.body}</p>
+        <p>{post.summary}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

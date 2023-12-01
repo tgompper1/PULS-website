@@ -21,7 +21,7 @@ export default function About() {
       <div class='row'>
         <div class='col-1'></div>
         <div class='col-10'>
-          <h1>In-Person Office Hours</h1>
+          <h1 className='page-title'>In-Person Office Hours</h1>
           <p>PULS hosts weekly office hours in the PULS office (room 1017 of the McIntyre Building!) 
             Refer to the schedule below and feel free to stop by during our allotted times between 10:30am 
             and 3:30pm from Monday to Friday (Note some times may be subject to closure.) This schedule remains

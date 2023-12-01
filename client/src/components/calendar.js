@@ -6,7 +6,7 @@ export default function Calendar() {
   // This following section will display 
  return (
    <div>
-     <h1>Calendar</h1>
+     <h1 className='page-title'>Calendar</h1>
    </div>
  );
 }

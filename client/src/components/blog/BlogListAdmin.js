@@ -25,8 +25,8 @@ function AdminBlogList(){
       : posts.map((post, k) => <PostCardAdmin post={post} key={k} />);
   
   return (
-    <div>
-      <Link to="/create-post" className="button add-post">ADD POST</Link>
+    <div className="page-content">
+      <Link to="/create-post" className="nav-button">ADD POST</Link>
       <div className="page-content">
       {blogList}
       </div>

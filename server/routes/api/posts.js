@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const {v4: uuidv4} = require('uuid');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -54,6 +55,7 @@ router.post('/', upload.single('photo'), (req,res) => {
 
   let postData = {
     title: req.body.title,
+    summary: req.body.summary,
     body: req.body.body,
     photo: req.file.filename
   }
@@ -80,7 +82,10 @@ router.put('/:id', (req, res) => {
 // @access Admin
 router.delete('/:id', async (req, res) => {
     await Post.findByIdAndDelete(req.params.id)
-    .then(post => res.json({ mgs: 'Post deleted successfully' }))
+    .then(post => {
+      fs.unlink(`public/images/${post.photo}`, (err) => console.log(err))
+      res.json({ mgs: 'Post deleted successfully' })
+    })
     .catch(err => res.status(404).json({ error: 'No such post' }));
 });
 
