@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -9,26 +11,28 @@ const CreateBlogPost = (props) => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: '',
-    body: ''
+    body: '',
+    photo: ''
   });
-
-  const onChange = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value });
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', post.title);
+    formData.append('body', post.body);
+    formData.append('photo', post.photo);
 
     axios
-      .post('http://localhost:8001/api/posts', post)
+      .post('http://localhost:8001/api/posts', formData)
       .then((res) => {
         setPost({
           title: '',
           body: '',
+          photo: '',
         });
 
         // Push to /blog
-        navigate('/blog');
+        navigate('/blog-admin');
       })
       .catch((err) => {
         console.log('Error in CreateBlogPost');
@@ -36,42 +40,52 @@ const CreateBlogPost = (props) => {
   };
 
   return (
-    <div className="container">
+    <div>
       <div>
         <div>
           <div>
             <br />
-            <Link to='/blog'>
+            <Link to='/blog-admin' className="button">
               Back to Blog List
             </Link>
           </div>
           <div>
-            <h1>Add Post</h1>
+            <h2>Add Post</h2>
 
-            <form noValidate onSubmit={onSubmit}>
+            <form noValidate onSubmit={onSubmit} className="page-content">
               <div>
                 <input
+                  className="text-input"
                   type='text'
                   placeholder='Title of BlogPost'
                   name='title'
                   value={post.title}
-                  onChange={onChange}
+                  onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
                 />
               </div>
               <br />
 
-              <div className='form-group'>
-                <input
+              <input 
+                type="file" 
+                accept='.png, .jpg, .jpeg'
+                name='photo' 
+                onChange={e => setPost({ ...post, photo: e.target.files[0]})}>
+              </input>
+              <br />
+
+              <div>
+                <ReactQuill
                   type='text'
                   placeholder='text here'
                   name='body'
                   className='form-control'
                   value={post.body}
-                  onChange={onChange}
+                  onChange={(newValue) =>{
+                    setPost({...post, ["body"]: newValue});}}
                 />
               </div>
 
-              <input type='submit'/>
+              <input type='submit' className="button" value="Create Post" />
             </form>
           </div>
         </div>

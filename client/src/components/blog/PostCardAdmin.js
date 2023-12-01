@@ -7,13 +7,16 @@ const PostCard = (props) => {
   const {id} = useParams();
   const date = new Date(post.createdAt)
   return(
-    <div class="post">
-      <Link to={`/edit-post/${post._id}`} className="button">
-        Edit
+    <div className="post-edit">
+      <Link to={`/edit-post/${post._id}`}>
+        <img src="images\edit-regular.svg" className="edit-button"></img>
       </Link>
-      <h3 className="post-title">{post.title}</h3>
-      <p>{post.body}</p>
-      <p>{date.toDateString()}</p>
+      <div className="post">
+        
+        <h3 className="post-title">{post.title}</h3>
+        <p className="date">{date.toDateString()}</p>
+        <p>{post.body}</p>
+      </div>
     </div>
   );
 };

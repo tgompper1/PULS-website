@@ -50,8 +50,10 @@ function EditPostAdmin(props) {
   };
 
   // delete the post
-  const onDeleteClick = (id) => {
-    axios
+  const onDeleteClick = () => {
+    const r = window.confirm("Delete post?");
+    if (r){
+      axios
       .delete(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
         navigate('/blog-admin');
@@ -59,6 +61,7 @@ function EditPostAdmin(props) {
       .catch((err) => {
         console.log('Error form EditPostAdmin_deleteClick');
       });
+    }
   };
 
   return (
@@ -71,7 +74,7 @@ function EditPostAdmin(props) {
               Back to Blog List
             </Link>
 
-            <Link to='/blog-admin' className="button" onClick={() => onDeleteClick(post._id)}>
+            <Link to='/blog-admin' className="button" onClick={() => onDeleteClick()}>
               Delete Post
             </Link>
           </div>
@@ -83,7 +86,7 @@ function EditPostAdmin(props) {
         <div>
           <form noValidate onSubmit={onSubmit}>
             <div>
-              <label htmlFor='title'>Title</label>
+              <h4>Title</h4>
               <input
                 type='text'
                 placeholder='Blog Post Title'
@@ -95,18 +98,16 @@ function EditPostAdmin(props) {
             <br />
 
             <div>
-              <label htmlFor='body'>Post Body</label>
-              <input
-                type='text'
-                placeholder='Post Body Here'
+              <h4>Post Body</h4>
+              <textarea
                 name='body'
-                value={post.body}
-                onChange={onChange}
+                value={post.body} 
+                onChange={onChange} 
               />
             </div>
             <br />
 
-            <button type='submit'>
+            <button type='submit' className="button">
               Update Post
             </button>
           </form>

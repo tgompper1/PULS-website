@@ -15,6 +15,10 @@ app.use(cors({origin: true, credentials: true}));
 // init Middleware
 app.use(express.json({extended: false}));
 
+// for importing images
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
+
 app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes

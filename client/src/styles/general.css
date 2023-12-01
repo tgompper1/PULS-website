@@ -4,14 +4,19 @@
   align-items: center;
 }
 
+
 h1 {
   font-size: 50px;
   color: #002f49;
 }
 
 p{
-  line-height: 1.5;
-  font-size:20px;
+  font-size:17px;
+}
+
+.page-title{
+  margin:20px;
+  color:#002f49;
 }
 
 .page-content{
@@ -21,4 +26,5 @@ p{
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
+  padding: 30px;
 }
