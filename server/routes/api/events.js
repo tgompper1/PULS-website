@@ -5,14 +5,14 @@ const router = express.Router();
 const Event = require('../../models/Event');
 
 
-// @route GET api/posts
+// @route GET api/events
 router.get('/', (req,res) => {
   Event.find()
     .then(events => res.json(events))
     .catch(err => res.status(404).json({nopostsfound:'No Events found'}));
 });
 
-// @route GET api/posts
+// @route GET api/events
 // @description add event
 // @access Admin
 router.post('/', (req,res) => {
@@ -21,7 +21,7 @@ router.post('/', (req,res) => {
     .catch(err => res.status(400).json({error:'Unable to add this event'}));
 })
 
-// @route GET api/posts/:id
+// @route GET api/events/:id
 // @description Delete post by id
 // @access Admin
 router.delete('/:id', async (req, res) => {
