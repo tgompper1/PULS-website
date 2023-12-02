@@ -80,6 +80,7 @@ router.put('/:id', (req, res) => {
 // @route GET api/posts/:id
 // @description Delete post by id
 // @access Admin
+
 router.delete('/:id', async (req, res) => {
     await Post.findByIdAndDelete(req.params.id)
     .then(post => {

@@ -26,10 +26,6 @@ function BlogList(){
   
   return (
     <div>
-      <div className="row">
-        
-      </div>
-
       <h2 className="page-title">Latest News</h2>
       <div className="page-content">
         {blogList}

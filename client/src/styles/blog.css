@@ -48,6 +48,7 @@
 .post-title {
   color: #003049;
 }
+
 .blog-image{
   width: 30%;
   object-fit: cover;
@@ -78,4 +79,5 @@ textarea {
   width: 100%;
   border: 1px solid #7c7c7b;
 }
+
 

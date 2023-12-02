@@ -11,10 +11,10 @@ export default function About() {
       <div class='row'>
         <div class='col-3'></div>
         <div class='col-3'>
-          <button class="button-77" >Current Council</button>
+          <button class="puls-button" >Current Council</button>
         </div>
         <div class='col-3'>
-          <button class="button-77">Past Councils</button>
+          <button class="puls-button">Past Councils</button>
         </div>
         <div class='col-3'></div>
       </div>
