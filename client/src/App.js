@@ -9,6 +9,10 @@ import Home from "./components/Home";
 import AdminBlogList from "./components/blog/BlogListAdmin";
 import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
+import EventsCalendar from "./components/calendar/Calendar";
+import AdminEventsCalendar from "./components/calendar/adminCalendar";
+import EditPostAdmin from "./components/blog/EditPostAdmin";
+import PostDetails from "./components/blog/PostDetails";
 
 import EventsCalendar from "./components/calendar/Calendar";
 import AdminEventsCalendar from "./components/calendar/adminCalendar";
@@ -25,19 +29,19 @@ const App = () => {
  return (
    <div>
      <Navbar />
-     <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/admincalendar" element={<AdminEventsCalendar />} />
-        <Route path="/calendar" element={<EventsCalendar />} />
-        <Route path="/blog" element={<BlogList />} />
-        <Route path="/blog-admin" element={<AdminBlogList />} />
-        <Route path="/create-post" element={<CreateBlogPost />} />
-        <Route path="/edit-post/:id" element={<EditPostAdmin />} />
-        <Route path="/post/:id" element={<PostDetails />} />
-        <Route path="/create-post" element={<CreateBlogPost />} />
-        <Route path="/edit-post/:id" element={<EditPostAdmin />} />
-     </Routes>
+     <div className='page-content'>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/calendar" element={<AdminEventsCalendar />} />
+            <Route path="/blog" element={<AdminBlogList />} />
+            <Route path="/create-post" element={<CreateBlogPost />} />
+            <Route path="/edit-post/:id" element={<EditPostAdmin />} />
+            <Route path="/post/:id" element={<PostDetails />} />
+            <Route path="/create-post" element={<CreateBlogPost />} />
+            <Route path="/edit-post/:id" element={<EditPostAdmin />} />
+        </Routes>
+      </div>
      <Footer />
    </div>
  );
