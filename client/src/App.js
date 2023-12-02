@@ -24,13 +24,13 @@ const App = () => {
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/calendar" element={<AdminEventsCalendar />} />
-            <Route path="/blog" element={<AdminBlogList />} />
+            <Route path="/calendar" element={<EventsCalendar />} />
+            <Route path="/blog" element={<BlogList />} />
             <Route path="/create-post" element={<CreateBlogPost />} />
             <Route path="/edit-post/:id" element={<EditPostAdmin />} />
             <Route path="/post/:id" element={<PostDetails />} />
-            <Route path="/create-post" element={<CreateBlogPost />} />
-            <Route path="/edit-post/:id" element={<EditPostAdmin />} />
+            {/* <Route path="/create-post" element={<CreateBlogPost />} />
+            <Route path="/edit-post/:id" element={<EditPostAdmin />} /> */}
         </Routes>
       </div>
      <Footer />
