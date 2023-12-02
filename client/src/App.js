@@ -10,6 +10,12 @@ import AdminBlogList from "./components/blog/BlogListAdmin";
 import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
 
+import EventsCalendar from "./components/calendar/Calendar";
+import AdminEventsCalendar from "./components/calendar/adminCalendar";
+
+import EditPostAdmin from "./components/blog/EditPostAdmin";
+import PostDetails from "./components/blog/PostDetails";
+
 import './styles/general.css';
 
 import { Login, Signup } from "./components/pages";
