@@ -23,11 +23,11 @@ export default function Navbar() {
                         BLOG
                     </NavLink>
                 </li>
-                <li className="nav-item my-nav-item">
+                {/* <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/admincalendar">
                         ADMIN CALENDAR
                     </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/calendar">
                         CALENDAR
