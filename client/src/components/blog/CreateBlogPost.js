@@ -34,7 +34,7 @@ const CreateBlogPost = (props) => {
         });
 
         // Push to /blog
-        navigate('/blog');
+        navigate('/blog-admin');
       })
       .catch((err) => {
         console.log('Error in CreateBlogPost');
