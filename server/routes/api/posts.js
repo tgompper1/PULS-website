@@ -69,8 +69,15 @@ router.post('/', upload.single('photo'), (req,res) => {
 // @route GET api/posts/:id
 // @description Update post
 // @access Admin
-router.put('/:id', (req, res) => {
-  Post.findByIdAndUpdate(req.params.id, req.body)
+router.put('/:id', upload.single('photo'), (req, res) => {
+  let postData = {
+    title: req.body.title,
+    summary: req.body.summary,
+    body: req.body.body,
+    photo: req.body.photo
+  }
+
+  Post.findByIdAndUpdate(req.params.id, postData)
     .then(post => res.json({ msg: 'Updated successfully' }))
     .catch(err =>
       res.status(400).json({ error: 'Unable to update the Database' })
@@ -87,6 +94,24 @@ router.delete('/:id', async (req, res) => {
       res.json({ mgs: 'Post deleted successfully' })
     })
     .catch(err => res.status(404).json({ error: 'No such post' }));
+});
+
+// @route GET api/posts/post-photo/:id
+// @description Delete post by id
+// @access Admin
+router.delete('/photo/:id', async (req, res) => {
+
+  await Post.findById(req.params.id)
+  .then(post => {
+    try{
+      if(fs.existsSync(`public/images/${post.photo}`))
+        fs.unlink(`public/images/${post.photo}`, (err) => console.log(err))
+        res.json(r => {msg : "Image deleted successfully"})
+    } catch(err){
+      console.error(err);
+    }
+  })
+  .catch(err => res.status(404).json({ error: 'No such post' }));
 });
 
 module.exports = router;

@@ -11,6 +11,7 @@ const CreateBlogPost = (props) => {
   const navigate = useNavigate();
   const [post, setPost] = useState({
     title: '',
+    summary: '',
     body: '',
     photo: ''
   });

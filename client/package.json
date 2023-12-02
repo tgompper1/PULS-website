@@ -8,8 +8,14 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+<<<<<<< HEAD
     "html-react-parser": "^5.0.6",
+=======
+    "date-fns": "^2.30.0",
+>>>>>>> 7df9bb9e2c8af9803dcdea28110ed0a13f9ca111
     "react": "^18.2.0",
+    "react-big-calendar": "^1.8.5",
+    "react-datepicker": "^4.23.0",
     "react-dom": "^18.2.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.19.0",

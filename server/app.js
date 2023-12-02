@@ -5,6 +5,7 @@ const connectDB = require('./config/db');
 
 // routes
 const posts = require('./routes/api/posts');
+const events = require('./routes/api/events');
 
 const app = express();
 connectDB();
@@ -23,6 +24,7 @@ app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes
 app.use('/api/posts', posts);
+app.use('/api/events', events);
 
 const PORT = process.env.port || 8001
 

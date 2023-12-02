@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
 
 function EditPostAdmin(props) {
   const [post, setPost] = useState({
     title: '',
+    summary: '',
     body: ''
   });
 
@@ -18,6 +20,7 @@ function EditPostAdmin(props) {
       .then((res) => {
         setPost({
           title: res.data.title,
+          summary: res.data.summary,
           body: res.data.body,
         });
       })
@@ -25,6 +28,8 @@ function EditPostAdmin(props) {
         console.log('Error from EditPostAdmin');
       });
   }, [id]);
+
+  const originalPhoto = post.photo
 
   const onChange = (e) => {
     setPost({ ...post, [e.target.name]: e.target.value });
@@ -34,13 +39,13 @@ function EditPostAdmin(props) {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const data = {
-      title: post.title,
-      body: post.body,
-    };
+    const formData = new FormData();
+    formData.append('title', post.title);
+    formData.append('summary', post.summary);
+    formData.append('body', post.body);
 
     axios
-      .put(`http://localhost:8001/api/posts/${id}`, data)
+      .put(`http://localhost:8001/api/posts/${id}`, formData)
       .then((res) => {
         navigate(`/blog-admin`);
       })
@@ -64,54 +69,56 @@ function EditPostAdmin(props) {
     }
   };
 
+
   return (
     <div>
-      <div>
-        <div>
-          <div>
-            <br />
-            <Link to='/blog-admin' className="button">
-              Back to Blog List
-            </Link>
+      <div className="page-content">
+        <Link to='/blog-admin' className="nav-button">
+          Back to Blog List
+        </Link>
 
-            <Link to='/blog-admin' className="button" onClick={() => onDeleteClick()}>
-              Delete Post
-            </Link>
-          </div>
-          <div>
-            <h1>Edit Post</h1>
-          </div>
-        </div>
+        <Link to='/blog-admin' className="nav-button" onClick={() => onDeleteClick()}>
+          Delete Post
+        </Link>
+        <h1>Edit Post</h1>
 
-        <div>
-          <form noValidate onSubmit={onSubmit}>
-            <div>
-              <h4>Title</h4>
-              <input
+        <form noValidate onSubmit={onSubmit}>
+
+          <h4>Title</h4>
+          <input
+            type='text'
+            placeholder='Blog Post Title'
+            name='title'
+            value={post.title}
+            onChange={onChange}
+          />
+
+          <h4>Summary</h4>
+          <input
+            type='text'
+            placeholder='Blog Post Title'
+            name='summary'
+            value={post.summary}
+            onChange={onChange}
+          />
+
+          <div>
+            <h4>Post Body</h4>
+            <ReactQuill
                 type='text'
-                placeholder='Blog Post Title'
-                name='title'
-                value={post.title}
-                onChange={onChange}
-              />
-            </div>
-            <br />
-
-            <div>
-              <h4>Post Body</h4>
-              <textarea
                 name='body'
-                value={post.body} 
-                onChange={onChange} 
+                value={post.body}
+                onChange={(newValue) =>{
+                  setPost({...post, ["body"]: newValue});}}
               />
-            </div>
-            <br />
+          </div>
+          <br />
 
-            <button type='submit' className="button">
-              Update Post
-            </button>
-          </form>
-        </div>
+          <button type='submit' className="button">
+            Update Post
+          </button>
+        </form>
+
       </div>
     </div>
   );

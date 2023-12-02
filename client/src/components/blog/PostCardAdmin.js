@@ -12,14 +12,16 @@ const PostCard = (props) => {
       <Link to={`/edit-post/${post._id}`}>
         <img src="images\edit-regular.svg" className="edit-button"></img>
       </Link>
-      <div className="post">
-        <img src={path} className="blog-image"></img>
-        <div className="post-text">
-          <h3 className="post-title">{post.title}</h3>
-          <p className="date">{date.toDateString()}</p>
-          <p>{post.summary}</p>
+      <Link to={`/edit-post/${post._id}`}>
+        <div className="post">
+          <img src={path} className="blog-image"></img>
+          <div className="post-text">
+            <h3 className="post-title">{post.title}</h3>
+            <p className="date">{date.toDateString()}</p>
+            <p>{post.summary}</p>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   
   );
