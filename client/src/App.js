@@ -9,13 +9,10 @@ import Home from "./components/Home";
 import AdminBlogList from "./components/blog/BlogListAdmin";
 import CreateBlogPost from "./components/blog/CreateBlogPost";
 import BlogList from "./components/blog/BlogList";
-<<<<<<< HEAD
 import EditPostAdmin from "./components/blog/EditPostAdmin";
 import PostDetails from "./components/blog/PostDetails";
-=======
 import AdminEventsCalendar from "./components/calendar/adminCalendar"
 import EventsCalendar from "./components/calendar/Calendar";
->>>>>>> 7df9bb9e2c8af9803dcdea28110ed0a13f9ca111
 
 import './styles/general.css';
 
