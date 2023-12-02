@@ -80,41 +80,46 @@ function EditPostAdmin(props) {
           Delete Post
         </Link>
   
-        <h1>Edit Post</h1>
+        <h2>Edit Post</h2>
 
         <div>
           <form noValidate onSubmit={onSubmit}>
-            <div>
-              <h4>Title</h4>
+            <label>
+              Title: <br />
               <input
-                type='text'
-                placeholder='Blog Post Title'
-                name='title'
-                value={post.title}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+              type='text'
+              placeholder='Blog Post Title'
+              name='title'
+              className='text-input'
+              value={post.title}
+              onChange={onChange}
+            />
+            </label>
+            <br></br>
 
-            <h4>Summary</h4>
-              <input
+            <label>
+            Summary: <br />
+            <input
                 type='text'
+                className='text-input'
                 placeholder='Blog Post Summary'
                 name='summary'
                 value={post.summary}
                 onChange={onChange}
               />
-            <br />
+            </label>
 
-            <div>
-              <h4>Post Body</h4>
+            <br></br>
+
+            <label>
+              Body: <br /> <br/>
               <ReactQuill
                 name='body'
                 value={post.body} 
                 onChange={(newValue) =>{
                   setPost({...post, ["body"]: newValue});}}
               />
-            </div>
+            </label>
             <br />
 
             <button type='submit' className="button">

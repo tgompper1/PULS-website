@@ -20,12 +20,13 @@
 
 .nav-button{
   color: #7c7c7b;
+  margin-bottom: 10px;
 }
 
 .post{
   display: flex;
   color:#7c7c7b;
-  margin: 5px;
+  margin: 20px;
 }
 
 .post-text{
@@ -61,23 +62,11 @@ textarea {
 
 .text-input{
   padding: 5px;
-  border:solid 1px #7c7c7b;
+  border: solid 1px #7c7c7b;
   border-radius: 5px;
-  width: 100%;
-}
-
-/* PostDetails Styles */
-.header-image{
-  width: 100%;
-  height: 60vh;
-  object-fit: cover;
+  margin-top: 5px;
 }
 
 
-/* EditPostAdmin Styles */
-.text-input{
-  width: 100%;
-  border: 1px solid #7c7c7b;
-}
 
 

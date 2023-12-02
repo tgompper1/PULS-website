@@ -7,7 +7,6 @@ export default function About() {
   // This following section will display 
  return (
    <div>
-      <div class='row'><div class='col-12 col-s-12'></div></div>
       <div class='row'>
         <div class='col-3'></div>
         <div class='col-3'>

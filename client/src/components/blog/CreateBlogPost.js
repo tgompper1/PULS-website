@@ -50,7 +50,7 @@ const CreateBlogPost = (props) => {
           </Link>
           <h2>Add Post</h2>
 
-          <form noValidate onSubmit={onSubmit} className="page-content">
+          <form noValidate onSubmit={onSubmit}>
             <div>
               <input
                 className="text-input"

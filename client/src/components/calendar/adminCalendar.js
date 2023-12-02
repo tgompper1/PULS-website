@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import DatePicker from "react-datepicker";
-import "./calendar.css";
+import "../../styles/calendar.css";
 import "../twelve_column_grid.css";
 import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 
@@ -79,7 +79,7 @@ export default function AdminEventsCalendar() {
     <div>
       <div className='row'>
         <div className="col-12 col-s-12 centered-div">
-          <h1>PULS Events Calendar</h1>
+          <h2 className="page-title">PULS Events Calendar</h2>
           <div className="add-event-calendar">
             <input  type="text"
                     placeholder="Event time and title"

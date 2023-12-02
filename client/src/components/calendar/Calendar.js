@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-datepicker/dist/react-datepicker.css";
-import "./calendar.css";
+import "../../styles/calendar.css";
 import "../twelve_column_grid.css"
 import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 
@@ -40,7 +40,7 @@ export default function EventsCalendar() {
         <div>
             <div className="row">
                 <div className="col-12 col-s-12 centered-div">
-                    <h1>PULS Events Calendar</h1>
+                    <h2 className="page-title">PULS Events Calendar</h2>
                     <Calendar   localizer={localizer}
                                 events={events}
                                 startAccessor="start"

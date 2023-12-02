@@ -27,7 +27,7 @@ function BlogList(){
   return (
     <div>
       <h2 className="page-title">Latest News</h2>
-      <div className="page-content">
+      <div>
         {blogList}
       </div>
     </div>
