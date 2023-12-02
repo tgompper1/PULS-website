@@ -50,7 +50,7 @@ export default function EventsCalendar() {
                     />
                 </div>
             </div>
-            <div className="row">
+            <div className="row" >
                 <div className="col-12 col-s-12"> 
                     <AutoplayCarousel></AutoplayCarousel>
                 </div>
