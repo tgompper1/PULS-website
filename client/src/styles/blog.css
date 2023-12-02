@@ -50,7 +50,8 @@
 }
 
 .blog-image{
-  width: 30%;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
 }
 
