@@ -14,11 +14,11 @@ import AdminEventsCalendar from "./components/calendar/adminCalendar";
 import EditPostAdmin from "./components/blog/EditPostAdmin";
 import PostDetails from "./components/blog/PostDetails";
 
-import EventsCalendar from "./components/calendar/Calendar";
-import AdminEventsCalendar from "./components/calendar/adminCalendar";
+//import EventsCalendar from "./components/calendar/Calendar";
+//import AdminEventsCalendar from "./components/calendar/adminCalendar";
 
-import EditPostAdmin from "./components/blog/EditPostAdmin";
-import PostDetails from "./components/blog/PostDetails";
+//import EditPostAdmin from "./components/blog/EditPostAdmin";
+//import PostDetails from "./components/blog/PostDetails";
 
 import './styles/general.css';
 
