@@ -2,12 +2,17 @@
 import './popup.css'
 
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Navbar from '../navbar/navbar';
+import App from '../../App';
+//import {nav} from '../navbar/navbar.css';
 
 export default function Popup(props) {
 
+
+    const[redirect, setRedirect] = useState(false);
     const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     email: "",
@@ -36,7 +41,7 @@ export default function Popup(props) {
     e.preventDefault();
     try {
 
-      debugger;
+      
       const { data } = await axios.post(
         "http://localhost:4000/login",
         {
@@ -51,6 +56,22 @@ export default function Popup(props) {
         setTimeout(() => {
           navigate("/");
         }, 1000);
+        await axios.get("http://localhost:4000/*").then(response => {
+          // handle successful response
+          return response.data;
+        })
+        .catch(error => {
+          // handle error
+          console.log(error);
+          return null;
+        });
+        //const targetWindow = window.get(App.Navbar);
+        
+        //Navbar.postMessage('modify', '*');
+        
+        const element = document.querySelector(".nav-links-admins");
+        //element.setAttribute.
+
       } else {
         handleError(message);
       }
@@ -63,6 +84,7 @@ export default function Popup(props) {
       password: "",
     });
   };
+  
 //DO WE ADD SIGNUP, if so add right before end of form
     return(props.trigger) ? (
         <div class='popup'>
