@@ -12,6 +12,9 @@ import BlogList from "./components/blog/BlogList";
 
 import './styles/general.css';
 
+import { Login, Signup } from "./components/pages";
+//import Home from "./components/pages/Home";
+
 const App = () => {
  return (
    <div>
