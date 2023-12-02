@@ -1,3 +1,9 @@
+
+.body {
+  padding:0;
+  margin:0;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -31,7 +37,7 @@ p.content{
 
 .page-content{
   width: 80vw;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   flex-direction: column;
   align-items: flex-start;
