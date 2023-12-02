@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import ReactQuill from 'react-quill';
 
 function EditPostAdmin(props) {
   const [post, setPost] = useState({
     title: '',
+    summary: '',
     body: ''
   });
 
@@ -18,6 +20,7 @@ function EditPostAdmin(props) {
       .then((res) => {
         setPost({
           title: res.data.title,
+          summary: res.data.summary,
           body: res.data.body,
         });
       })
@@ -36,6 +39,7 @@ function EditPostAdmin(props) {
 
     const data = {
       title: post.title,
+      summary: post.summary,
       body: post.body,
     };
 
@@ -66,22 +70,16 @@ function EditPostAdmin(props) {
 
   return (
     <div>
-      <div>
-        <div>
-          <div>
-            <br />
-            <Link to='/blog-admin' className="button">
-              Back to Blog List
-            </Link>
+      <div className='page-content'>
+        <Link to='/blog-admin' className="nav-button">
+          Back to Blog List
+        </Link>
 
-            <Link to='/blog-admin' className="button" onClick={() => onDeleteClick()}>
-              Delete Post
-            </Link>
-          </div>
-          <div>
-            <h1>Edit Post</h1>
-          </div>
-        </div>
+        <Link to='/blog-admin' className="nav-button" onClick={() => onDeleteClick()}>
+          Delete Post
+        </Link>
+  
+        <h1>Edit Post</h1>
 
         <div>
           <form noValidate onSubmit={onSubmit}>
@@ -97,12 +95,23 @@ function EditPostAdmin(props) {
             </div>
             <br />
 
+            <h4>Summary</h4>
+              <input
+                type='text'
+                placeholder='Blog Post Summary'
+                name='summary'
+                value={post.summary}
+                onChange={onChange}
+              />
+            <br />
+
             <div>
               <h4>Post Body</h4>
-              <textarea
+              <ReactQuill
                 name='body'
                 value={post.body} 
-                onChange={onChange} 
+                onChange={(newValue) =>{
+                  setPost({...post, ["body"]: newValue});}}
               />
             </div>
             <br />

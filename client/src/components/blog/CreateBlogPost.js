@@ -87,7 +87,6 @@ const CreateBlogPost = (props) => {
                 type='text'
                 placeholder='text here'
                 name='body'
-                className='form-control'
                 value={post.body}
                 onChange={(newValue) =>{
                   setPost({...post, ["body"]: newValue});}}

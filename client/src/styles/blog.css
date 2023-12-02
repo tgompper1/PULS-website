@@ -72,3 +72,10 @@ textarea {
   object-fit: cover;
 }
 
+
+/* EditPostAdmin Styles */
+.text-input{
+  width: 100%;
+  border: 1px solid #7c7c7b;
+}
+
