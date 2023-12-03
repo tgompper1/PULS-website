@@ -45,7 +45,7 @@ const CreateBlogPost = (props) => {
     <div>
       <div>
         <div className='page-content'>
-          <Link to='/blog-admin' className="nav-button">
+          <Link to='/blog' className="nav-button">
             Back to Blog List
           </Link>
           <h2>Add Post</h2>

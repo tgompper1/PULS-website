@@ -61,7 +61,7 @@ function EditPostAdmin(props) {
       axios
       .delete(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        navigate('/blog-admin');
+        navigate('/blog');
       })
       .catch((err) => {
         console.log('Error form EditPostAdmin_deleteClick');
