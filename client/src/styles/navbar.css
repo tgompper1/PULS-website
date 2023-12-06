@@ -31,6 +31,12 @@
     margin-right: 0;
     margin-left: auto;
 }
+.nav-Leftmenu{
+    display: flex;
+    list-style: none;
+    margin-right: 0;
+    line-height: 0.1em;
+}
 
 .nav-links{
     color: #000;

@@ -8,8 +8,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 export default function Popup(props) {
+  const { dispatch } = useAuthContext();
 
     const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -39,7 +41,7 @@ export default function Popup(props) {
     e.preventDefault();
     try {
 
-      debugger;
+      
       const { data } = await axios.post(
         "http://localhost:8001/login",
         {
@@ -50,7 +52,10 @@ export default function Popup(props) {
       console.log(data);
       const { success, message } = data;
       if (success) {
+        localStorage.setItem('user', JSON.stringify(inputValue));
+        dispatch({type: 'LOGIN', payload: inputValue});
         handleSuccess(message);
+        
         setTimeout(() => {
           navigate("/");
         }, 1000);
