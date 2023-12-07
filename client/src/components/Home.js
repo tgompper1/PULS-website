@@ -10,7 +10,7 @@ export default function Home() {
             <div class="col-12 col-s-12">
                 <figure class="image">
                     <img src="images\montreal.jpg" alt="montreal" class='cropped-image none-image position-60-50'></img>
-                    <figcaption>PHYSIOLOGY <br></br>UNDERGRADUATE <br></br>LEAGUE OF <br></br> STUDENTS</figcaption>
+                    <figcaption className="title">PHYSIOLOGY <br></br>UNDERGRADUATE <br></br>LEAGUE OF <br></br> STUDENTS</figcaption>
                 </figure>
             </div>
         </div>

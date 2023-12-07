@@ -23,3 +23,13 @@
     color: #fff;
     font-size: 70px;
 }
+
+@media screen and (max-width: 960px) {
+    .image figcaption{
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        color: #fff;
+        font-size: 30px;
+    }
+}
