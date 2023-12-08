@@ -7,20 +7,20 @@ export default function About() {
   // This following section will display 
  return (
    <div>
-      <div class='row'><div class='col-12 col-s-12'></div></div>
-      <div class='row'>
-        <div class='col-3'></div>
-        <div class='col-3'>
-          <button class="puls-button" >Current Council</button>
+      <div className='row'><div className='col-12 col-s-12'></div></div>
+      <div className='row'>
+        <div className='col-3'></div>
+        <div className='col-3'>
+          <button className="puls-button" >Current Council</button>
         </div>
-        <div class='col-3'>
-          <button class="puls-button">Past Councils</button>
+        <div className='col-3'>
+          <button className="puls-button">Past Councils</button>
         </div>
-        <div class='col-3'></div>
+        <div className='col-3'></div>
       </div>
-      <div class='row'>
-        <div class='col-1'></div>
-        <div class='col-10'>
+      <div className='row'>
+        <div className='col-1'></div>
+        <div className='col-10'>
           <h1 className='page-title'>In-Person Office Hours</h1>
           <p>PULS hosts weekly office hours in the PULS office (room 1017 of the McIntyre Building!) 
             Refer to the schedule below and feel free to stop by during our allotted times between 10:30am 
@@ -32,7 +32,7 @@ export default function About() {
             office hours table
           </table>
         </div>
-        <div class='col-1'></div>
+        <div className='col-1'></div>
       </div>
    </div>
  );

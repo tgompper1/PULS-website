@@ -25,7 +25,7 @@ export default function Navbar() {
         window.addEventListener('resize', showButton);
     }, []);
  return (
-   <div class="col-12 col-s-12">
+   <div className="col-12 col-s-12">
      <nav className="navbar">
        <NavLink className="navbar-logo" to="/">
             <img src="images\logo\logo_color.png" width={120} height={80}></img>

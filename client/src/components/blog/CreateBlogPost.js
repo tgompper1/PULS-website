@@ -93,7 +93,7 @@ const CreateBlogPost = (props) => {
               />
             </div>
 
-            <input type='submit' className="button" value="Create Post" />
+            <input type='submit' onSubmit={onSubmit} className="button" value="Create Post" />
           </form>
         </div>
       </div>

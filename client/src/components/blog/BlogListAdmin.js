@@ -22,7 +22,10 @@ function AdminBlogList(){
   const blogList = 
     posts.length === 0
       ? 'there is no post record'
-      : posts.map((post, k) => <PostCardAdmin post={post} key={k} />);
+      : posts.map((post, k) => {
+        console.log("key" + k);
+        <PostCardAdmin post={post} key={k} />
+      });
   
   return (
     <div className="page-content">
