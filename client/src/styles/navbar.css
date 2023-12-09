@@ -93,13 +93,17 @@
       padding: 2rem;
       width: 100%;
       display: table;
+      color: #197278;
     }
   
     .nav-links:hover {
-      color: #197278;
+      color: #fff;
+      background-color:#197278 ;
       transform: scale(1.2);
       transition: all 0.3s ease;
     }
+
+    
   
     .nav-item:hover {
       border: none;
