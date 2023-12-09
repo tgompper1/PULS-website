@@ -20,7 +20,6 @@ const PostDetails = (props) => {
     axios
       .get(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        console.log(res)
         setPost({
           title: res.data.title,
           photo: res.data.photo,

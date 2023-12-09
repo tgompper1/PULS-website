@@ -41,7 +41,7 @@ export default function Navbar() {
                     </NavLink>
                 </li> */}
                 <li className="nav-item my-nav-item">
-                    <NavLink className="nav-link nav-links" to="/admin-blog" onClick={closeMobileMenu}>
+                    <NavLink className="nav-link nav-links" to="/blog-admin" onClick={closeMobileMenu}>
                         ADMIN BLOG
                     </NavLink>
                 </li>

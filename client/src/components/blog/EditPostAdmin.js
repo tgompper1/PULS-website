@@ -53,8 +53,7 @@ function EditPostAdmin(props) {
       });
   };
 
-  // delete the post
-
+  // delete post
   const onDeleteClick = () => {
     const r = window.confirm("Delete post?");
     if (r){

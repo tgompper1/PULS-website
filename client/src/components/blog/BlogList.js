@@ -24,6 +24,10 @@ function BlogList(){
       ? 'there is no post record'
       : posts.map((post, k) => <PostCard post={post} key={k} />);
   
+  for (var i = 0; i < blogList.length; i++){
+    console.log(blogList[i])
+  }
+  
   return (
     <div>
       <h2 className="page-title">Latest News</h2>
