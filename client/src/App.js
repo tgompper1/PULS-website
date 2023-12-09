@@ -32,7 +32,7 @@ const App = () => {
      <div className='page-content'>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
+            {/* <Route path="/about" element={<About />} /> */}
             <Route path="/admin-calendar" element={<AdminEventsCalendar />} />
             <Route path="/calendar" element={<EventsCalendar />} />
             <Route path="/admin-blog" element={<AdminBlogList />} />

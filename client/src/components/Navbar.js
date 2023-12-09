@@ -35,11 +35,11 @@ export default function Navbar() {
                 {click ? <FaTimes/> : <FaBars />}
             </div>
             <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
-                <li className="nav-item my-nav-item">
+                {/* <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/about" onClick={closeMobileMenu}>
                         ABOUT
                     </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/admin-blog" onClick={closeMobileMenu}>
                         ADMIN BLOG
