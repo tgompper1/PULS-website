@@ -32,71 +32,80 @@ const CreateBlogPost = (props) => {
           body: '',
           photo: '',
         });
-
-        // Push to /blog
-        navigate('/blog');
       })
       .catch((err) => {
         console.log('Error in CreateBlogPost');
       });
+
+    navigate('/blog-admin');
   };
 
   return (
     <div>
-      <div>
-        <div className='page-content'>
-          <Link to='/blog' className="nav-button">
-            Back to Blog List
-          </Link>
-          <h2>Add Post</h2>
+      <Link to='/blog-admin' className="button">
+        Back to Blog List
+      </Link>
 
-          <form noValidate onSubmit={onSubmit} className="page-content">
-            <div>
-              <input
-                className="text-input"
-                type='text'
-                placeholder='Title'
-                name='title'
-                value={post.title}
-                onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
-              />
-            </div>
-            <br />
-            <div>
-              <input
-                  className="text-input"
-                  type='text'
-                  placeholder='Summary'
-                  name='summary'
-                  value={post.summary}
-                  onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
-                />
-            </div>
-            <br />
+      <h2>Add Post</h2>
 
-            <input 
-              type="file" 
-              accept='.png, .jpg, .jpeg'
-              name='photo' 
-              onChange={e => setPost({ ...post, photo: e.target.files[0]})}>
-            </input>
-            <br />
-
-            <div>
-              <ReactQuill
-                type='text'
-                placeholder='text here'
-                name='body'
-                value={post.body}
-                onChange={(newValue) =>{
-                  setPost({...post, ["body"]: newValue});}}
-              />
-            </div>
-
-            <input type='submit' className="button" value="Create Post" />
-          </form>
+      <form noValidate onSubmit={onSubmit}>
+        <div className='input-element'>
+          <label>Title (max 100 characters): </label>
+          <br />
+          <input
+            className="text-input"
+            type='text'
+            placeholder='Title'
+            name='title'
+            maxlength="100"
+            value={post.title}
+            onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
+          />
         </div>
-      </div>
+        <br />
+
+        <div className='input-element'>
+          <label>Summary (max 200 characters): </label>
+          <br />
+          <textarea
+              className="text-input"
+              type='text'
+              placeholder='Summary'
+              name='summary'
+              maxlength="200"
+              value={post.summary}
+              onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
+            />
+        </div>
+        <br />
+
+        <div className='input-element'>
+          <label>Image: </label>
+          <input 
+            type="file" 
+            accept='.png, .jpg, .jpeg'
+            name='photo' 
+            onChange={e => setPost({ ...post, photo: e.target.files[0]})}>
+          </input>
+        </div>
+        <br />
+
+        <div className='input-element'>
+          <label>Body: </label>
+          <br />
+          <ReactQuill
+            type='text'
+            className="text-editor"
+            placeholder='text here'
+            name='body'
+            value={post.body}
+            onChange={(newValue) =>{
+              setPost({...post, ["body"]: newValue});}}
+          />
+        </div>
+          
+        <input type='submit' onSubmit={onSubmit} className="button" value="Create Post"/>
+      </form>
     </div>
   );
 };

@@ -2,6 +2,7 @@
 
 .centered-div {
   text-align: center;
+  /* z-index: 1; */
 }
 
 .deletion-message{
@@ -146,7 +147,7 @@
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
-  z-index: 4;
+  /* z-index: 4; */
 }
 
 .rbc-row-content-scrollable {
@@ -347,7 +348,7 @@
 
 .rbc-show-more {
   background-color: rgba(255, 255, 255, 0.3);
-  z-index: 4;
+  /* z-index: 4; */
   font-weight: bold;
   font-size: 85%;
   height: auto;
@@ -455,7 +456,7 @@
 
 .rbc-overlay {
   position: absolute;
-  z-index: 5;
+  /* z-index: 5; */
   border: 1px solid #e5e5e5;
   background-color: #fff;
   -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);

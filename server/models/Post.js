@@ -21,7 +21,7 @@ const PostSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
-  }
+  },
 });
 
 module.exports = Post = mongoose.model('post', PostSchema);

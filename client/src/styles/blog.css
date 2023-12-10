@@ -10,22 +10,21 @@
 }
 
 .button{
-  color: black;
+  color:  black;
   padding: 5px;
-  background-color: rgb(201, 201, 201);
+  background-color:darkgrey;
   border-radius: 5px;
-  margin:5px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border:none;
-}
-
-.nav-button{
-  color: #7c7c7b;
 }
 
 .post{
   display: flex;
   color:#7c7c7b;
-  margin: 5px;
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
 .post-text{
@@ -42,30 +41,42 @@
 }
 
 .edit-button{
-  margin: 20px;
+  width: 25px;
+  height: auto;
+  margin-top: 40px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
+textarea{
+  width: 100%;
+  font-family:Arial, Helvetica, sans-serif;
+}
 .post-title {
   color: #003049;
 }
 
 .blog-image{
-  width: 150px;
-  height: 150px;
   object-fit: cover;
-}
-
-textarea {
-  width: 500px;
-  height: 200px;
+  width: 20vw;
+  height: 20vw;
 }
 
 .text-input{
   padding: 5px;
-  border:solid 1px #7c7c7b;
-  border-radius: 5px;
+  border:solid 1px #c0c0c0;
   width: 100%;
+  box-sizing:border-box;
 }
+
+.input-element{
+  margin-bottom: 5px;
+}
+
+.text-editor{
+  margin-bottom: 20px;
+}
+
 
 /* PostDetails Styles */
 .header-image{
@@ -74,11 +85,43 @@ textarea {
   object-fit: cover;
 }
 
+/* SpotlightPostCard Styles*/
 
-/* EditPostAdmin Styles */
-.text-input{
-  width: 100%;
-  border: 1px solid #7c7c7b;
+.spotlight-text{
+  word-break: break-all;
+  color:#003049;
+  margin-bottom: 50px;
 }
 
+@media screen and (max-width: 960px) {
+  .post{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
 
+  .post-text{
+    width: 100%;
+    margin-left: 0px;
+  }
+
+  .blog-image{
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+  }
+
+  .post-edit .blog-image{
+    width: 60vw;
+    height: 60vw;
+  }
+
+  .post-edit .post{
+    width: 60vw;
+    margin-left: 20px;
+  }
+
+  
+}

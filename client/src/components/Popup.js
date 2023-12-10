@@ -47,7 +47,7 @@ export default function Popup(props) {
         },
         { withCredentials: true }
       );
-      console.log(data);
+
       const { success, message } = data;
       if (success) {
         handleSuccess(message);
@@ -68,8 +68,8 @@ export default function Popup(props) {
   };
 //DO WE ADD SIGNUP, if so add right before end of form
     return(props.trigger) ? (
-        <div class='popup'>
-            <div class='popup-inner'>
+        <div className='popup'>
+            <div className='popup-inner'>
                 <div>
                     <h1>Admin Login</h1>
                     <form onSubmit={handleSubmit}>
@@ -79,13 +79,13 @@ export default function Popup(props) {
                         <label for="pass">Password:  &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</label>
                         <input type="password" id="pass" name="password" value={password} placeholder="Enter your password" onChange={handleOnChange}/><br></br>
                         <br></br><br></br>
-                        <input type="submit" value="Submit" class='submit-btn'></input>
+                        <input type="submit" value="Submit" className='submit-btn'></input>
                         
                         
                     </form>
                     
                 </div>
-                <button class="close-btn" onClick={() => props.setTrigger(false)}>X</button>
+                <button className="close-btn" onClick={() => props.setTrigger(false)}>X</button>
                 
                 {props.children}
                 

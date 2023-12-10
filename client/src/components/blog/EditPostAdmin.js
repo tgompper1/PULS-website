@@ -46,22 +46,57 @@ function EditPostAdmin(props) {
     axios
       .put(`http://localhost:8001/api/posts/${id}`, data)
       .then((res) => {
-        navigate(`/blog-admin`);
+        console.log('Updated post successfully');
       })
       .catch((err) => {
         console.log('Error in EditPostAdmin');
       });
+    
+      navigate('/blog-admin');
   };
 
-  // delete the post
+  // get spotlight post id
+  useEffect(()=>{
+    axios.get('http://localhost:8001/api/settings/spotlight')
+    .then((res) =>{
+      localStorage.setItem("spotlightPostID", JSON.stringify(res.data.spotlightID));
+    })
+    .catch(() =>{
+      localStorage.setItem("spotlightPostID", JSON.stringify([]));
+    });
+  });
 
+  const deleteSpotlight = () => {
+    axios
+    .delete(`http://localhost:8001/api/settings/spotlight`)
+    .then((res) => {
+      console.log('successfuly removed old spotlight post');
+    })
+    .catch((err) => {
+      console.log('Error form EditPostAdmin_starClick');
+    });
+  }
+
+  const addRemoveSpotlight =
+    JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
+    ? <Link to='/blog-admin' className="button" onClick={() => onStarClick()}>
+        Star
+      </Link>
+    : <Link  to= '/blog-admin' onClick={deleteSpotlight} className="button">
+        Remove Spotlight
+      </Link>
+
+  // delete post
   const onDeleteClick = () => {
     const r = window.confirm("Delete post?");
     if (r){
+      if (String(id) === JSON.parse(localStorage.getItem("spotlightPostID"))){
+        deleteSpotlight();
+      }
       axios
       .delete(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        navigate('/blog');
+        navigate('/blog-admin');
       })
       .catch((err) => {
         console.log('Error form EditPostAdmin_deleteClick');
@@ -69,61 +104,83 @@ function EditPostAdmin(props) {
     }
   };
 
+
+  // star post
+  const onStarClick = () => {
+    deleteSpotlight();
+
+    // add star post
+    axios
+    .post(`http://localhost:8001/api/settings/spotlight/`, {id})
+    .then((res) => {
+      console.log('Successfully added spotlight')
+    })
+    .catch((err) =>{
+      console.log('Error form EditPostAdmin_starClick');
+    })
+  };
+
   return (
     <div>
-      <div className='page-content'>
-        <Link to='/blog-admin' className="nav-button">
-          Back to Blog List
-        </Link>
+      <Link to='/blog-admin' className="button">
+        Back
+      </Link>
 
-        <Link to='/blog-admin' className="nav-button" onClick={() => onDeleteClick()}>
-          Delete Post
-        </Link>
-  
-        <h1>Edit Post</h1>
+      <Link to='/blog-admin' className="button" onClick={() => onDeleteClick()}>
+        Delete
+      </Link>
 
-        <div>
-          <form noValidate onSubmit={onSubmit}>
-            <div>
-              <h4>Title</h4>
-              <input
-                type='text'
-                placeholder='Blog Post Title'
-                name='title'
-                value={post.title}
-                onChange={onChange}
-              />
-            </div>
-            <br />
+      {addRemoveSpotlight}
 
-            <h4>Summary</h4>
-              <input
-                type='text'
-                placeholder='Blog Post Summary'
-                name='summary'
-                value={post.summary}
-                onChange={onChange}
-              />
-            <br />
+      <h2>Edit Post</h2>
 
-            <div>
-              <h4>Post Body</h4>
-              <ReactQuill
-                name='body'
-                value={post.body} 
-                onChange={(newValue) =>{
-                  setPost({...post, ["body"]: newValue});}}
-              />
-            </div>
-            <br />
-
-            <button type='submit' className="button">
-              Update Post
-            </button>
-          </form>
+      <form noValidate onSubmit={onSubmit}>
+        <div className='input-element'>
+          <label>Title (max 100 characters): </label>
+          <br />
+          <input
+            type='text'
+            className='text-input'
+            placeholder='Title'
+            name='title'
+            maxlength="100"
+            value={post.title}
+            onChange={onChange}
+          />
         </div>
-      </div>
+        <br />
+
+        <div className='input-element'>
+          <label>Summary (200 characters max): </label>
+          <br />
+          <textarea
+            type='text'
+            className="text-input"
+            placeholder='Blog Post Summary'
+            name='summary'
+            maxlength="200"
+            value={post.summary}
+            onChange={onChange}
+          />
+        </div>
+        <br />
+
+        <div className='input-element'>
+          <label>Body: </label>
+          <br />
+          <ReactQuill
+            name='body'
+            value={post.body} 
+            onChange={(newValue) =>{
+              setPost({...post, ["body"]: newValue});}}
+          />
+        </div>
+        <br />
+
+        <input type='submit' onSubmit={onSubmit} className="button" value="Update Post"/>
+      </form>
     </div>
+
   );
 }
 

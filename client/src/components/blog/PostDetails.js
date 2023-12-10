@@ -20,7 +20,6 @@ const PostDetails = (props) => {
     axios
       .get(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        console.log(res)
         setPost({
           title: res.data.title,
           photo: res.data.photo,
@@ -38,7 +37,7 @@ const PostDetails = (props) => {
   return(
     <div>
       <div className="page-content">
-        <Link to={`/blog`} className="nav-button">
+        <Link to={`/blog`} className="button">
           Back
         </Link>
         <h1 className="page-title">{post.title}</h1>

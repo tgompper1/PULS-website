@@ -1,3 +1,9 @@
+html,
+body{
+   width: 100%;
+   overflow-x: hidden;
+   margin: 0;
+}
 
 .body {
   padding:0;
@@ -22,12 +28,12 @@ p.content{
 }
 
 .page-title{
-  margin:20px;
+  margin-top:20px;
   color:#002f49;
 }
 
 .page-content{
-  width: 80vw;
+  width: 70vw;
   /* display: flex; */
   justify-content: center;
   flex-direction: column;

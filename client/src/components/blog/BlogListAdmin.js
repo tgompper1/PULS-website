@@ -8,6 +8,7 @@ import '../../styles/blog.css';
 function AdminBlogList(){
   const [posts, setPosts] = useState([]);
 
+  // get posts
   useEffect(()=>{
     axios
       .get('http://localhost:8001/api/posts')
@@ -15,18 +16,25 @@ function AdminBlogList(){
         setPosts(res.data);
       })
       .catch((err) => {
-        console.log('Error from ShowBlogList');
+        console.log('Error from BlogListAdmin');
       });
   }, []);
 
+
   const blogList = 
     posts.length === 0
-      ? 'there is no post record'
+      ? ''
       : posts.map((post, k) => <PostCardAdmin post={post} key={k} />);
+
   
   return (
-    <div className="page-content">
-      <Link to="/create-post" className="nav-button">ADD POST</Link>
+    <div>
+      <h1>Blog</h1>
+      
+      <Link to="/create-post" className="button">
+        Create
+      </Link>
+
       {blogList}
     </div>
   );
