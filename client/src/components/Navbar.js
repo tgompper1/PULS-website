@@ -4,8 +4,23 @@ import '../styles/navbar.css'
 import './twelve_column_grid.css'
 import { FaBars, FaTimes } from 'react-icons/fa'
 
+
+import { useLogout } from "../hooks/useLogout";
+
 import { NavLink } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 export default function Navbar() {
+    const { user } = useAuthContext();
+    const { logout } = useLogout();
+    const handleLogout = () => {
+        if(user != null)
+        {
+        logout()
+        }
+      };
+
+
     const [click, setClick] =  useState(false);
     const [button, setButton] = useState(true);
 
@@ -58,6 +73,11 @@ export default function Navbar() {
                 <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/calendar" onClick={closeMobileMenu}>
                         CALENDAR
+                    </NavLink>
+                </li>
+                <li className="nav-item my-nav-item" style={{ visibility: user ? 'visible' : 'hidden' }}>
+                    <NavLink className="nav-link nav-links"  onClick={handleLogout} style={{ visibility: user ? 'visible' : 'hidden' }}>
+                        LOGOUT
                     </NavLink>
                 </li>
             </ul>

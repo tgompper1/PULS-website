@@ -3,8 +3,20 @@ import '../styles/footer.css'
 import Popup from "./Popup";
 import {useState} from 'react'
 
+import { useLogout } from '../hooks/useLogout'
+import { useAuthContext } from "../hooks/useAuthContext";
+
 export default function Footer() {
     const[buttonPopup, setButtonPopup] = useState(false);
+    const { user } = useAuthContext();
+    const { logout } = useLogout();
+
+    const handleClick = () => {
+        if(user != null)
+        {
+        logout()
+        }
+      };
 
     return (
         <div className="col-12 col-s-12 footer">
@@ -41,7 +53,7 @@ export default function Footer() {
                     <a href="mailto: pulsmcgill@gmail.com">pulsmcgill@gmail.com</a><br></br>
                     <a href="https://www.facebook.com/pulsmcgill">PULS McGill</a> 
                 </div>
-                <div className="gallery-column">
+                <div className="gallery-column" style={{visibility: user ? 'hidden' : 'visible' }}>
                     <h3>ADMIN LOGIN</h3>
                     <h4 onClick={() => setButtonPopup(true)}>Login Here</h4>
                     <Popup trigger={buttonPopup} setTrigger={setButtonPopup}>

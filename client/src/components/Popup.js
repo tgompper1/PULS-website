@@ -1,15 +1,14 @@
-//import React from'react'
-import '../styles/popup.css'
 
-//import React from'react'
-//import './popup.css'
+import '../styles/popup.css'
 
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuthContext } from '../hooks/useAuthContext';
 
 export default function Popup(props) {
+  const { dispatch } = useAuthContext();
 
     const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
@@ -50,10 +49,12 @@ export default function Popup(props) {
 
       const { success, message } = data;
       if (success) {
+        localStorage.setItem('user', JSON.stringify(inputValue));
+        dispatch({type: 'LOGIN', payload: inputValue});
         handleSuccess(message);
         setTimeout(() => {
           navigate("/");
-        }, 1000);
+        }, 500);
       } else {
         handleError(message);
       }
