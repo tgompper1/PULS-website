@@ -22,10 +22,6 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  spotlight: {
-    type: Boolean,
-    default: false
-  }
 });
 
 module.exports = Post = mongoose.model('post', PostSchema);

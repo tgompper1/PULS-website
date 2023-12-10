@@ -20,6 +20,7 @@
 
 .nav-button{
   color: #7c7c7b;
+  margin: 5px;
 }
 
 .post{
@@ -81,4 +82,18 @@ textarea {
   border: 1px solid #7c7c7b;
 }
 
+/* SpotlightPostCard Styles*/
 
+.spotlight-text{
+  position:relative;
+  color:#003049;
+  bottom:175px;
+  left: 55px;
+}
+.spotlight-post{
+  position: relative;
+  bottom: -20px;
+}
+.post-container{
+  height: 70vh;
+}

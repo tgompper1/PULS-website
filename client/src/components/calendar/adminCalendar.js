@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import DatePicker from "react-datepicker";
-import "./calendar.css";
+import '../../styles/calendar.css';
 import "../twelve_column_grid.css";
 import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
 

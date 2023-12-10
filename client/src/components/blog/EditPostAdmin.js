@@ -60,12 +60,27 @@ function EditPostAdmin(props) {
       axios
       .delete(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        navigate('/blog');
+        navigate('/blog-admin');
       })
       .catch((err) => {
         console.log('Error form EditPostAdmin_deleteClick');
       });
     }
+  };
+
+  // star post
+  const onStarClick = () => {
+    axios
+    .put(`http://localhost:8001/api/settings/spotlight/${id}`, {spotlightID: id})
+    .then((res) => {
+      console.log(localStorage.getItem("spotlightPostID"));
+      localStorage.setItem("spotlightPostID", JSON.stringify({id}));
+      console.log(localStorage.getItem("spotlightPostID"));
+      navigate('/blog-admin');
+    })
+    .catch((err) => {
+      console.log('Error form EditPostAdmin_starClick');
+    });
   };
 
   return (
@@ -77,6 +92,10 @@ function EditPostAdmin(props) {
 
         <Link to='/blog-admin' className="nav-button" onClick={() => onDeleteClick()}>
           Delete Post
+        </Link>
+
+        <Link to='/blog-admin' className="nav-button" onClick={() => onStarClick()}>
+          Star
         </Link>
   
         <h1>Edit Post</h1>
@@ -116,7 +135,7 @@ function EditPostAdmin(props) {
             </div>
             <br />
 
-            <button type='submit' className="button">
+            <button type='submit' onSubmit={onSubmit} className="button">
               Update Post
             </button>
           </form>

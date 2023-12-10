@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 const posts = require('./routes/api/posts');
 const events = require('./routes/api/events');
 const authRoute = require("./routes/api/AuthRoute");
-
+const settings = require("./routes/api/settings");
 
 const app = express();
 connectDB();
@@ -31,6 +31,7 @@ app.get('/', (req, res) => res.send('Hello world!'));
 app.use('/api/posts', posts);
 app.use('/api/events', events);
 app.use("/api/AuthRoute", authRoute);
+app.use("/api/settings", settings);
 
 const PORT = process.env.port || 8001
 
