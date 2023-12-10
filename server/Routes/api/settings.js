@@ -10,10 +10,12 @@ const Settings = require('../../models/Settings');
 // @access Admin
 router.get('/spotlight', (req, res) => {
   Settings.findOne(req.params.id)
-    .then(str => res.json(str))
-    .catch(err =>
-      res.status(400).json({ error: 'Unable id found' })
-    );
+    .then(str => {
+      res.json(str);
+    })
+    .catch(err =>{
+      res.status(400).json({ error: 'Unable to find spotlight id' });
+    });
 });
 
 // @route GET api/settings/spotlight/:id

@@ -6,7 +6,7 @@ const SpotlightPostCard = (props) => {
   const post = props.post;
   const date = new Date(post.createdAt); 
   const path = "http://localhost:8001/images/" + post.photo
-  console.log(post);
+
   return(
     <div className="post-container">
       <Link to={`/post/${post._id}`} className="spotlight-post">

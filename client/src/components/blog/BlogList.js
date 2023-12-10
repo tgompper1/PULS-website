@@ -23,6 +23,7 @@ function BlogList(){
     .then((res) =>{
       localStorage.setItem("spotlightPostID", JSON.stringify(res.data.spotlightID));
     })
+    .catch(console.log('Error in BlogList_getSpotlight'));
   });
 
   // get posts
@@ -70,7 +71,7 @@ function BlogList(){
   
   return (
     <div>
-      <h2 className="page-title">Latest News</h2>
+      <h1 className="page-title">Latest News</h1>
       <div>
         {post}
         {blogList}
