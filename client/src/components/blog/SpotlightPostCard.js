@@ -10,13 +10,13 @@ const SpotlightPostCard = (props) => {
   return(
     <div className="post-container">
       <Link to={`/post/${post._id}`} className="spotlight-post">
-      <img src={path} className="header-image"></img>
-      <div className="spotlight-text">
-        <h1 className>{post.title}</h1>
-        <p>{date.toDateString()}</p>
-        <p>{post.summary}</p>
-      </div>
-    </Link>
+        <img src={path} className="header-image"></img>
+        <div className="spotlight-text">
+          <h1 className>{post.title}</h1>
+          <p>{date.toDateString()}</p>
+          <p>{post.summary}</p>
+        </div>
+      </Link>
     </div>
   );
 };

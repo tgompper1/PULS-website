@@ -33,8 +33,7 @@ const CreateBlogPost = (props) => {
           photo: '',
         });
 
-        // Push to /blog
-        navigate('/blog');
+        navigate('/blog-admin');
       })
       .catch((err) => {
         console.log('Error in CreateBlogPost');
@@ -45,7 +44,7 @@ const CreateBlogPost = (props) => {
     <div>
       <div>
         <div className='page-content'>
-          <Link to='/blog' className="nav-button">
+          <Link to='/blog-admin' className="nav-button">
             Back to Blog List
           </Link>
           <h2>Add Post</h2>
@@ -68,6 +67,7 @@ const CreateBlogPost = (props) => {
                   type='text'
                   placeholder='Summary'
                   name='summary'
+                  maxlength="150"
                   value={post.summary}
                   onChange={(e) => setPost({ ...post, [e.target.name]: e.target.value })}
                 />

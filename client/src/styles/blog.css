@@ -26,10 +26,12 @@
 .post{
   display: flex;
   color:#7c7c7b;
-  margin: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .post-text{
+  word-break: break-all;
   margin-left: 20px;
 }
 
@@ -51,14 +53,9 @@
 }
 
 .blog-image{
-  width: 150px;
-  height: 150px;
   object-fit: cover;
-}
-
-textarea {
-  width: 500px;
-  height: 200px;
+  width: 20vw;
+  height: 20vw;
 }
 
 .text-input{
@@ -85,15 +82,39 @@ textarea {
 /* SpotlightPostCard Styles*/
 
 .spotlight-text{
-  position:relative;
+  word-break: break-all;
   color:#003049;
-  bottom:175px;
-  left: 55px;
+  margin-bottom: 50px;
 }
-.spotlight-post{
-  position: relative;
-  bottom: -20px;
-}
-.post-container{
-  height: 70vh;
+
+@media screen and (max-width: 960px) {
+  .post{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .post-text{
+    width: 100%;
+  }
+
+  .blog-image{
+    width: 80vw;
+    height: 60vh;
+    object-fit: cover;
+  }
+
+  .post-edit .blog-image{
+    width: 60vw;
+    height: 60vw;
+
+  }
+
+  .post-edit .post{
+    width: 60vw;
+  }
+
+  
 }

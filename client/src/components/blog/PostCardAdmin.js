@@ -13,7 +13,9 @@ const PostCard = (props) => {
         <img src="images\edit-regular.svg" className="edit-button"></img>
       </Link>
       <div className="post">
-        <img src={path} className="blog-image"></img>
+        <div>
+          <img src={path} className="blog-image"></img>
+        </div>
         <div className="post-text">
           <h3 className="post-title">{post.title}</h3>
           <p className="date">{date.toDateString()}</p>

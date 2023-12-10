@@ -53,10 +53,24 @@ function EditPostAdmin(props) {
       });
   };
 
+  const deleteSpotlight = () => {
+    axios
+    .delete(`http://localhost:8001/api/settings/spotlight`)
+    .then((res) => {
+      console.log('successfuly removed old spotlight post');
+    })
+    .catch((err) => {
+      console.log('Error form EditPostAdmin_starClick');
+    });
+  }
+
   // delete post
   const onDeleteClick = () => {
     const r = window.confirm("Delete post?");
     if (r){
+      if (String(id) === JSON.parse(localStorage.getItem("spotlightPostID"))){
+        deleteSpotlight();
+      }
       axios
       .delete(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
@@ -68,21 +82,16 @@ function EditPostAdmin(props) {
     }
   };
 
+
   // star post
   const onStarClick = () => {
-    axios
-    .delete(`http://localhost:8001/api/settings/spotlight`)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log('Error form EditPostAdmin_starClick');
-    });
-    
+    deleteSpotlight();
+
+    // add star post
     axios
     .post(`http://localhost:8001/api/settings/spotlight/`, {id})
     .then((res) => {
-      console.log(res)
+      console.log('Successfully added spotlight')
     })
     .catch((err) =>{
       console.log('Error form EditPostAdmin_starClick');
@@ -125,6 +134,7 @@ function EditPostAdmin(props) {
                 type='text'
                 placeholder='Blog Post Summary'
                 name='summary'
+                maxlength="200"
                 value={post.summary}
                 onChange={onChange}
               />

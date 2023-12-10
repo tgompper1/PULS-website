@@ -51,7 +51,7 @@ function AdminBlogList(){
     
 
   return (
-    <div className="page-content">
+    <div>
       <Link to="/create-post" className="nav-button">ADD POST</Link>
       {blogList}
     </div>

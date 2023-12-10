@@ -8,7 +8,9 @@ const PostCard = (props) => {
   const path = "http://localhost:8001/images/" + post.photo
   return(
     <Link to={`/post/${post._id}`} className="post">
-      <img src={path} className="blog-image"></img>
+      <div>
+        <img src={path} className="blog-image"></img>
+      </div>
       <div className="post-text">
         <h3 className="post-title">{post.title}</h3>
         <p className="date">{date.toDateString()}</p>
