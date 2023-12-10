@@ -71,16 +71,22 @@ function EditPostAdmin(props) {
   // star post
   const onStarClick = () => {
     axios
-    .put(`http://localhost:8001/api/settings/spotlight/${id}`, {spotlightID: id})
+    .delete(`http://localhost:8001/api/settings/spotlight`)
     .then((res) => {
-      console.log(localStorage.getItem("spotlightPostID"));
-      localStorage.setItem("spotlightPostID", JSON.stringify({id}));
-      console.log(localStorage.getItem("spotlightPostID"));
-      navigate('/blog-admin');
+      console.log(res);
     })
     .catch((err) => {
       console.log('Error form EditPostAdmin_starClick');
     });
+    
+    axios
+    .post(`http://localhost:8001/api/settings/spotlight/`, {id})
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) =>{
+      console.log('Error form EditPostAdmin_starClick');
+    })
   };
 
   return (

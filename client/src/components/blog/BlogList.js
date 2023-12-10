@@ -9,13 +9,7 @@ import '../../styles/blog.css';
 function BlogList(){
   const [posts, setPosts] = useState([]);
   const [spotlightPostID, setSpotlightPostID] = useState([]);
-  const [spotlightPost, setSpotlightPost] = useState({
-    title: '',
-    photo: '',
-    body: '',
-    summary: '',
-    createdAt: ''
-  });
+  const [spotlightPost, setSpotlightPost] = useState([]);
 
   // get spotlight post id
   useEffect(()=>{
@@ -23,7 +17,10 @@ function BlogList(){
     .then((res) =>{
       localStorage.setItem("spotlightPostID", JSON.stringify(res.data.spotlightID));
     })
-    .catch(console.log('Error in BlogList_getSpotlight'));
+    .catch(() =>{
+      localStorage.setItem("spotlightPostID", JSON.stringify([]));
+      console.log('No spotlight id');
+    });
   });
 
   // get posts
@@ -42,31 +39,34 @@ function BlogList(){
 
   // get spotlight post by id
   useEffect(() => {
-    axios
+    if (JSON.parse(localStorage.getItem("spotlightPostID")).length !== 0) {
+      axios
       .get(`http://localhost:8001/api/posts/${JSON.parse(localStorage.getItem("spotlightPostID"))}`)
-      .then((res) => {
-        setSpotlightPost({
-          _id: JSON.parse(localStorage.getItem("spotlightPostID")),
-          title: res.data.title,
-          photo: res.data.photo,
-          body: res.data.body,
-          summary: res.data.summary,
-          createdAt:res.data.createdAt,
+        .then((res) => {
+          setSpotlightPost({
+            _id: JSON.parse(localStorage.getItem("spotlightPostID")),
+            title: res.data.title,
+            photo: res.data.photo,
+            body: res.data.body,
+            summary: res.data.summary,
+            createdAt:res.data.createdAt,
+          });
+        })
+        .catch((err) => {
+          console.log('Error from BlogList');
         });
-      })
-      .catch((err) => {
-        console.log('Error from PostDetails');
-      });
-  }, [spotlightPostID]);
+    }
+  });
 
   const blogList = 
     posts.length === 0
       ? 'there is no post record'
       : posts.map((post, k) => <PostCard post={post} key={k} />);
 
+  
   const post = 
-    spotlightPost === undefined
-    ? "no spotlight"
+    JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
+    ? ""
     : <SpotlightPostCard post={spotlightPost} key={JSON.parse(localStorage.getItem("spotlightPostID"))}/>;
   
   return (

@@ -9,7 +9,7 @@ const Settings = require('../../models/Settings');
 // @description get spotlight ID
 // @access Admin
 router.get('/spotlight', (req, res) => {
-  Settings.findOne(req.params.id)
+  Settings.findOne(req.body.id)
     .then(str => {
       res.json(str);
     })
@@ -18,16 +18,30 @@ router.get('/spotlight', (req, res) => {
     });
 });
 
-// @route GET api/settings/spotlight/:id
-// @description update spotlight ID
+// @route GET api/settings/spotlight
+// @description delete spotlight ID
 // @access Admin
-router.put('/spotlight/:id', (req, res) => {
-  Settings.findOneAndUpdate(req.body)
-    .then(str => res.json({ msg: 'Spotlight Updated successfully' }))
+router.delete('/spotlight/', (req, res) => {
+  Settings.findOneAndDelete(req.body)
+    .then(str => res.json({ msg: 'Spotlight deleted successfully' }))
     .catch(err =>{
-      res.status(400).json({ error: 'Unable to update spotlight' })
-    }
-    );
+      res.status(400).json({ error: 'Unable to delete spotlight' })
+    });
 });
+
+// @route GET api/settings/spotlight
+// @description post spotlight ID
+// @access Admin
+router.post('/spotlight/', (req, res) => {
+  let postData = {
+    spotlightID: req.body.id,
+  }
+  Settings.create(postData)
+    .then(str => res.json({ msg: 'Spotlight added successfully' }))
+    .catch(err =>{
+      res.status(400).json({ error: 'Unable to add spotlight' })
+    });
+});
+
 
 module.exports = router;
