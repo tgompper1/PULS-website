@@ -33,7 +33,7 @@ p.content{
 }
 
 .page-content{
-  width: 80vw;
+  width: 70vw;
   /* display: flex; */
   justify-content: center;
   flex-direction: column;

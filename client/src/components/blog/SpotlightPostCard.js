@@ -12,7 +12,7 @@ const SpotlightPostCard = (props) => {
       <Link to={`/post/${post._id}`} className="spotlight-post">
         <img src={path} className="header-image"></img>
         <div className="spotlight-text">
-          <h1 className>{post.title}</h1>
+          <h2 className>{post.title}</h2>
           <p>{date.toDateString()}</p>
           <p>{post.summary}</p>
         </div>

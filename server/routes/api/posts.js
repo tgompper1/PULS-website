@@ -61,8 +61,11 @@ router.post('/', upload.single('photo'), (req,res) => {
   }
 
   Post.create(postData)
-    .then(post => res.json({msg: 'Post added successfully'}))
-    .catch(err => res.status(400).json({error:'Unable to add this post'}));
+    .then(post => {console.log(post)})
+    .catch(err => console.log(err))
+  //Post.create(postData)
+  //  .then(post => res.json({msg: 'Post added successfully'}))
+  //  .catch(err => res.status(400).json({error:'Unable to add this post'}));
 })
 
 

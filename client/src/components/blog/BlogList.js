@@ -8,7 +8,6 @@ import '../../styles/blog.css';
 
 function BlogList(){
   const [posts, setPosts] = useState([]);
-  const [spotlightPostID, setSpotlightPostID] = useState([]);
   const [spotlightPost, setSpotlightPost] = useState([]);
 
   // get spotlight post id
@@ -60,7 +59,7 @@ function BlogList(){
 
   const blogList = 
     posts.length === 0
-      ? 'there is no post record'
+      ? ''
       : posts.map((post, k) => <PostCard post={post} key={k} />);
 
   
@@ -71,11 +70,9 @@ function BlogList(){
   
   return (
     <div>
-      <h1 className="page-title">Latest News</h1>
-      <div>
-        {post}
-        {blogList}
-      </div>
+      <h1>Blog</h1>
+      {post}
+      {blogList}
     </div>
   );
 }
