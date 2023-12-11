@@ -4,17 +4,26 @@ import '../../styles/blog.css';
 
 const PostCard = (props) => {
   const post = props.post;
-  const {id} = useParams();
   const date = new Date(post.createdAt)
+  const path = "http://localhost:8001/images/" + post.photo
+
   return(
-    <div class="post">
+    <div className="post-edit">
       <Link to={`/edit-post/${post._id}`}>
-        Edit
+        <img src="images\edit-regular.svg" className="edit-button"></img>
       </Link>
-      <h3 className="post-title">{post.title}</h3>
-      <p>{post.body}</p>
-      <p>{date.toDateString()}</p>
+      <div className="post">
+        <div>
+          <img src={path} className="blog-image"></img>
+        </div>
+        <div className="post-text">
+          <h3 className="post-title">{post.title}</h3>
+          <p className="date">{date.toDateString()}</p>
+          <p>{post.summary}</p>
+        </div>
+      </div>
     </div>
+  
   );
 };
 

@@ -6,9 +6,13 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import DatePicker from "react-datepicker";
-import "./calendar.css";
+import '../../styles/calendar.css';
 import "../twelve_column_grid.css";
 import AutoplayCarousel from "../imageCarousel/autoplayCarousel";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+
 
 const locales = {
     "en-CA": require("date-fns/locale/en-CA"),
@@ -23,6 +27,15 @@ const localizer = dateFnsLocalizer({
 
 
 export default function AdminEventsCalendar() {  
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  if(user == null)
+  {
+    navigate("/");
+  }
+
+
+
   const [events, setEvents] = useState([]);
   const [event, setEvent] = useState({
     title: '',
@@ -76,6 +89,7 @@ export default function AdminEventsCalendar() {
 
 
   return (
+    
     <div>
       <div className='row'>
         <div className="col-12 col-s-12 centered-div">

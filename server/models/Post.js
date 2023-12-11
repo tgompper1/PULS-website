@@ -6,7 +6,15 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  summary: {
+    type: String,
+    required: true
+  },
   body: {
+    type: String,
+    required: true
+  },
+  photo:{
     type: String,
     required: true
   },
@@ -14,10 +22,6 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
 });
 
 module.exports = Post = mongoose.model('post', PostSchema);
