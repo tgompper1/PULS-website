@@ -13,12 +13,8 @@ import EventsCalendar from "./components/calendar/Calendar";
 import AdminEventsCalendar from "./components/calendar/adminCalendar";
 import EditPostAdmin from "./components/blog/EditPostAdmin";
 import PostDetails from "./components/blog/PostDetails";
+import { AuthContextProvider } from './context/AuthContext'
 
-//import EventsCalendar from "./components/calendar/Calendar";
-//import AdminEventsCalendar from "./components/calendar/adminCalendar";
-
-//import EditPostAdmin from "./components/blog/EditPostAdmin";
-//import PostDetails from "./components/blog/PostDetails";
 
 import './styles/general.css';
 
@@ -29,6 +25,7 @@ import { useAuthContext } from './hooks/useAuthContext';
 function App() {
   const { user } = useAuthContext();
  return (
+  
    <div>
      <Navbar />
      <div className='page-content'>
@@ -39,10 +36,10 @@ function App() {
             
             <Route 
               path="/admin_calendar"
-              element={user ? <AdminEventsCalendar /> : <Navigate to="/" />} 
-            />
+              element={user ? <AdminEventsCalendar /> : <Navigate to="/" />}/>
             
-            <Route path="/blog-admin" element={<AdminBlogList />} />
+            <Route path="/blog-admin" 
+            element={user ? <AdminBlogList /> : <Navigate to="/" />}/>
             <Route path="/blog" element={<BlogList />} />
             <Route path="/create-post" element={<CreateBlogPost />} />
             <Route path="/edit-post/:id" element={<EditPostAdmin />} />
@@ -51,6 +48,7 @@ function App() {
       </div>
      <Footer />
    </div>
+   
  );
 };
  export default App;

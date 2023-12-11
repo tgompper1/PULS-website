@@ -8,13 +8,15 @@ import { AuthContextProvider } from './context/AuthContext'
 const container= document.getElementById('root');
 const root = createRoot(container);
 root.render(
+  
   <React.StrictMode>
     <AuthContextProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
     </AuthContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  ,
 );
 
 /*

@@ -38,7 +38,7 @@ export default function Popup(props) {
     e.preventDefault();
     try {
 
-      debugger;
+      
       const { data } = await axios.post(
         "http://localhost:8001/login",
         {
@@ -50,11 +50,15 @@ export default function Popup(props) {
       const { success, message } = data;
       if (success) {
         localStorage.setItem('user', JSON.stringify(inputValue));
-        dispatch({type: 'LOGIN', payload: inputValue});
-        handleSuccess(message);
+        
+        //handleSuccess(message);
         setTimeout(() => {
           navigate("/");
-        }, 500);
+        }, 200);
+
+        dispatch({type: 'LOGIN', payload: inputValue});
+        props.setTrigger(false)
+        
       } else {
         handleError(message);
       }

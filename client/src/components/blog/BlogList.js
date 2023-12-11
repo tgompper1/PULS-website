@@ -63,8 +63,12 @@ function BlogList(){
       : posts.map((post, k) => <PostCard post={post} key={k} />);
 
   
-  const post = 
+  /*const post = 
     JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
+    ? ""
+    : <SpotlightPostCard post={spotlightPost} key={JSON.parse(localStorage.getItem("spotlightPostID"))}/>;*/
+    const post = 
+    JSON.parse(localStorage.getItem("spotlightPostID")) !== null && JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
     ? ""
     : <SpotlightPostCard post={spotlightPost} key={JSON.parse(localStorage.getItem("spotlightPostID"))}/>;
   
