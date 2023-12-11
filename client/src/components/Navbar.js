@@ -49,12 +49,12 @@ export default function Navbar() {
             <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
             <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/blog-admin" onClick={closeMobileMenu} style={{ visibility: user ? 'visible' : 'hidden'}}>
-                        ADMIN BLOG
+                        BLOG
                     </NavLink>
                 </li>
                 <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/admin_calendar" onClick={closeMobileMenu} style={{ visibility: user ? 'visible' : 'hidden' }}>
-                        ADMIN CALENDAR
+                        CALENDAR
                     </NavLink>
                 </li>
                 <li  style={{ visibility: user ? 'visible' : 'hidden' }}>

@@ -12,8 +12,7 @@ const PostDetails = (props) => {
     createdAt: new Date()
   });
 
-  const { id } = useParams();
-  const navigate = useNavigate();
+  const { id } = useParams()
 
   // get the post by id
   useEffect(() => {

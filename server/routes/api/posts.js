@@ -52,20 +52,19 @@ router.get('/:id', (req, res) => {
 // @description add post
 // @access Admin
 router.post('/', upload.single('photo'), (req,res) => {
-
-  let postData = {
-    title: req.body.title,
-    summary: req.body.summary,
-    body: req.body.body,
-    photo: req.file.filename
+  try{
+    let postData = {
+      title: req.body.title,
+      summary: req.body.summary,
+      body: req.body.body,
+      photo: req.file.filename
+    }
+    Post.create(postData)
+    .then(post => res.json({msg: 'Post added successfully'}))
+    .catch(err => res.status(400).json({error:'Unable to add this post'}));
+  }catch{
+    
   }
-
-  Post.create(postData)
-    .then(post => {})
-    .catch(err => console.log(err))
-  //Post.create(postData)
-  //  .then(post => res.json({msg: 'Post added successfully'}))
-  //  .catch(err => res.status(400).json({error:'Unable to add this post'}));
 })
 
 

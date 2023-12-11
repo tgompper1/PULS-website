@@ -4,43 +4,36 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 
 function EditPostAdmin(props) {
-  const [post, setPost] = useState({
-    title: '',
-    summary: '',
-    body: ''
-  });
+  const [title, setTitle] = useState({title:''});
+  const [summary, setSummary] = useState({summary:''});
+  const [body, setBody] = useState({body:''});
+
 
   const { id } = useParams();
   const navigate = useNavigate();
 
   // get the post by id
-  useEffect(() => {
+  useEffect( () => {
     axios
       .get(`http://localhost:8001/api/posts/${id}`)
       .then((res) => {
-        setPost({
-          title: res.data.title,
-          summary: res.data.summary,
-          body: res.data.body,
-        });
+        setTitle({title: res.data.title});
+        setSummary({summary: res.data.summary});
+        setBody({body: res.data.body});
       })
       .catch((err) => {
         console.log('Error from EditPostAdmin');
       });
   }, [id]);
 
-  const onChange = (e) => {
-    setPost({ ...post, [e.target.name]: e.target.value });
-  };
-
   // apply the changes on submit
   const onSubmit = (e) => {
     e.preventDefault();
 
     const data = {
-      title: post.title,
-      summary: post.summary,
-      body: post.body,
+      title: title.title,
+      summary: summary.summary,
+      body: body.body,
     };
 
     axios
@@ -141,11 +134,11 @@ function EditPostAdmin(props) {
           <input
             type='text'
             className='text-input'
-            placeholder='Title'
             name='title'
             maxlength="100"
-            value={post.title}
-            onChange={onChange}
+            value={title.title}
+            onChange={(e) =>{
+              setTitle({title: e.target.value})}}
           />
         </div>
         <br />
@@ -156,11 +149,11 @@ function EditPostAdmin(props) {
           <textarea
             type='text'
             className="text-input"
-            placeholder='Blog Post Summary'
             name='summary'
             maxlength="200"
-            value={post.summary}
-            onChange={onChange}
+            value={summary.summary}
+            onChange={ (e) =>
+              setSummary({['summary']: e.target.value})}
           />
         </div>
         <br />
@@ -170,9 +163,9 @@ function EditPostAdmin(props) {
           <br />
           <ReactQuill
             name='body'
-            value={post.body} 
+            value={body.body} 
             onChange={(newValue) =>{
-              setPost({...post, ["body"]: newValue});}}
+              setBody({body: newValue})}}
           />
         </div>
         <br />
