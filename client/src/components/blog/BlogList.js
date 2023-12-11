@@ -64,7 +64,7 @@ function BlogList(){
 
   
   const post = 
-    JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
+    JSON.parse(localStorage.getItem("spotlightPostID")) !== null && JSON.parse(localStorage.getItem("spotlightPostID")).length === 0
     ? ""
     : <SpotlightPostCard post={spotlightPost} key={JSON.parse(localStorage.getItem("spotlightPostID"))}/>;
   

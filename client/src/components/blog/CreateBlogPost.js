@@ -43,7 +43,7 @@ const CreateBlogPost = (props) => {
   return (
     <div>
       <Link to='/blog-admin' className="button">
-        Back to Blog List
+        Back
       </Link>
 
       <h2>Add Post</h2>

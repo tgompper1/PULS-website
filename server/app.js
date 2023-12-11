@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 
+
 // routes
 const posts = require('./routes/api/posts');
 const events = require('./routes/api/events');
@@ -30,7 +31,7 @@ app.get('/', (req, res) => res.send('Hello world!'));
 // use Routes
 app.use('/api/posts', posts);
 app.use('/api/events', events);
-app.use("/api/AuthRoute", authRoute);
+app.use("/", authRoute);
 app.use("/api/settings", settings);
 
 const PORT = process.env.port || 8001

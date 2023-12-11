@@ -61,7 +61,7 @@ router.post('/', upload.single('photo'), (req,res) => {
   }
 
   Post.create(postData)
-    .then(post => {console.log(post)})
+    .then(post => {})
     .catch(err => console.log(err))
   //Post.create(postData)
   //  .then(post => res.json({msg: 'Post added successfully'}))
