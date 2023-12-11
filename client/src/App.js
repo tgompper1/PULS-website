@@ -1,6 +1,6 @@
 import React from "react";
 // We use Route in order to define the different routes of our application
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
  // We import all the components we need in our app
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -13,29 +13,33 @@ import EventsCalendar from "./components/calendar/Calendar";
 import AdminEventsCalendar from "./components/calendar/adminCalendar";
 import EditPostAdmin from "./components/blog/EditPostAdmin";
 import PostDetails from "./components/blog/PostDetails";
+import { AuthContextProvider } from './context/AuthContext'
 
-//import EventsCalendar from "./components/calendar/Calendar";
-//import AdminEventsCalendar from "./components/calendar/adminCalendar";
-
-//import EditPostAdmin from "./components/blog/EditPostAdmin";
-//import PostDetails from "./components/blog/PostDetails";
 
 import './styles/general.css';
 
 import { Login, Signup } from "./components/pages";
-//import Home from "./components/pages/Home";
+import { useAuthContext } from './hooks/useAuthContext';
 
-const App = () => {
+
+function App() {
+  const { user } = useAuthContext();
  return (
+  
    <div>
      <Navbar />
      <div className='page-content'>
         <Routes>
             <Route path="/" element={<Home />} />
             {/* <Route path="/about" element={<About />} /> */}
-            <Route path="/admin-calendar" element={<AdminEventsCalendar />} />
             <Route path="/calendar" element={<EventsCalendar />} />
-            <Route path="/blog-admin" element={<AdminBlogList />} />
+            
+            <Route 
+              path="/admin_calendar"
+              element={user ? <AdminEventsCalendar /> : <Navigate to="/" />}/>
+            
+            <Route path="/blog-admin" 
+            element={user ? <AdminBlogList /> : <Navigate to="/" />}/>
             <Route path="/blog" element={<BlogList />} />
             <Route path="/create-post" element={<CreateBlogPost />} />
             <Route path="/edit-post/:id" element={<EditPostAdmin />} />
@@ -44,6 +48,7 @@ const App = () => {
       </div>
      <Footer />
    </div>
+   
  );
 };
  export default App;

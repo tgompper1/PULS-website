@@ -4,8 +4,19 @@ import { Link } from "react-router-dom";
 import PostCardAdmin from './PostCardAdmin';
 import '../twelve_column_grid.css'
 import '../../styles/blog.css';
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 function AdminBlogList(){
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
+  if(user == null)
+  {
+    navigate("/");
+  }
+
+
+
   const [posts, setPosts] = useState([]);
 
   // get posts

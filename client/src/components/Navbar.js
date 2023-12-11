@@ -3,9 +3,25 @@ import React, { useState, useEffect} from 'react'
 import '../styles/navbar.css'
 import './twelve_column_grid.css'
 import { FaBars, FaTimes } from 'react-icons/fa'
+import '../styles/about.css'
+
+
+import { useLogout } from "../hooks/useLogout";
 
 import { NavLink } from "react-router-dom";
+import { useAuthContext } from '../hooks/useAuthContext'; 
+
 export default function Navbar() {
+    const { user } = useAuthContext();
+    const { logout } = useLogout();
+    const handleLogout = () => {
+        if(user != null)
+        {
+        logout()
+        }
+      };
+
+
     const [click, setClick] =  useState(false);
     const [button, setButton] = useState(true);
 
@@ -24,6 +40,49 @@ export default function Navbar() {
         showButton();
         window.addEventListener('resize', showButton);
     }, []);
+
+    const getNavLinks = () =>
+    {
+        if(user != null)
+        {
+            return [
+            <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
+            <li className="nav-item my-nav-item">
+                    <NavLink className="nav-link nav-links" to="/blog-admin" onClick={closeMobileMenu} style={{ visibility: user ? 'visible' : 'hidden'}}>
+                        ADMIN BLOG
+                    </NavLink>
+                </li>
+                <li className="nav-item my-nav-item">
+                    <NavLink className="nav-link nav-links" to="/admin_calendar" onClick={closeMobileMenu} style={{ visibility: user ? 'visible' : 'hidden' }}>
+                        ADMIN CALENDAR
+                    </NavLink>
+                </li>
+                <li  style={{ visibility: user ? 'visible' : 'hidden' }}>
+                <button className='puls-button' onClick={handleLogout} style={{ visibility: user ? 'visible' : 'hidden', minHeight: '20px',  height: '40px', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>LOGOUT</button>
+                </li>
+              
+            </ul>];
+        }else{
+            return [
+            <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
+                
+                
+                <li className="nav-item my-nav-item">
+                    <NavLink className="nav-link nav-links" to="/blog" onClick={closeMobileMenu}>
+                        BLOG
+                    </NavLink>
+                </li>
+                
+                <li className="nav-item my-nav-item">
+                    <NavLink className="nav-link nav-links" to="/calendar" onClick={closeMobileMenu}>
+                        CALENDAR
+                    </NavLink>
+                </li>
+                
+            </ul>];
+
+        }
+    }
  return (
    <div className="col-12 col-s-12">
      <nav className="navbar">
@@ -34,33 +93,15 @@ export default function Navbar() {
             <div className = 'menu-icon' onClick={handleClick}>
                 {click ? <FaTimes/> : <FaBars />}
             </div>
-            <ul className = {click ? 'nav-menu active' : 'nav-menu'}>
+            
                 {/* <li className="nav-item my-nav-item">
                     <NavLink className="nav-link nav-links" to="/about" onClick={closeMobileMenu}>
                         ABOUT
                     </NavLink>
                 </li> */}
-                <li className="nav-item my-nav-item">
-                    <NavLink className="nav-link nav-links" to="/blog-admin" onClick={closeMobileMenu}>
-                        ADMIN BLOG
-                    </NavLink>
-                </li>
-                <li className="nav-item my-nav-item">
-                    <NavLink className="nav-link nav-links" to="/blog" onClick={closeMobileMenu}>
-                        BLOG
-                    </NavLink>
-                </li>
-                <li className="nav-item my-nav-item">
-                    <NavLink className="nav-link nav-links" to="/admin-calendar" onClick={closeMobileMenu}>
-                        ADMIN CALENDAR
-                    </NavLink>
-                </li>
-                <li className="nav-item my-nav-item">
-                    <NavLink className="nav-link nav-links" to="/calendar" onClick={closeMobileMenu}>
-                        CALENDAR
-                    </NavLink>
-                </li>
-            </ul>
+
+                {getNavLinks()}
+            
        </div>
      </nav>
    </div>
